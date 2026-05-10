@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>反詐騙繪本創作任務：我是小小防詐設計師</title>
+    
+    <!-- Google Fonts: Noto Sans TC -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#FF8A80',
+                        secondary: '#80D8FF',
+                        accent: '#B9F6CA',
+                        warning: '#FFD180'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            min-height: 100vh;
+            background-attachment: fixed;
+        }
+        .step-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .step-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Custom Scrollbar for textareas */
+        textarea::-webkit-scrollbar {
+            width: 8px;
+        }
+        textarea::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+            border-radius: 8px;
+        }
+        textarea::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 8px;
+        }
+        textarea::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+    </style>
+</head>
+<body class="text-slate-800 pb-20">
+
+    <!-- Navbar & Progress -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100">
+        <div class="max-w-5xl mx-auto px-4 py-3">
+            <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-2">
+                    <div class="bg-gradient-to-r from-pink-400 to-orange-400 text-white p-2 rounded-xl">
+                        <i data-lucide="shield-check" class="w-6 h-6"></i>
+                    </div>
+                    <h1 class="font-bold text-lg md:text-xl bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-orange-500">
+                        我是小小防詐設計師
+                    </h1>
+                </div>
+                <div class="text-sm font-medium text-gray-500" id="step-indicator">
+                    步驟 1 / 6
+                </div>
+            </div>
+            <!-- Progress Bar -->
+            <div class="w-full bg-gray-100 rounded-full h-2.5">
+                <div id="progress-bar" class="bg-gradient-to-r from-pink-400 to-orange-400 h-2.5 rounded-full transition-all duration-500" style="width: 16.66%"></div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-4 mt-8">
+        
+        <!-- Step 1: 認識近年流行詐騙手法 -->
+        <section id="step-1" class="step-content active">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-black mb-4 text-slate-700">🔍 認識近年流行詐騙手法</h2>
+                <p class="text-slate-500 text-lg">知己知彼，百戰百勝！創作前先來了解壞人的套路吧！</p>
+            </div>
+
+            <!-- 防詐公式與5不 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                <div class="bg-gradient-to-br from-red-50 to-pink-50 rounded-3xl p-6 border border-pink-100 shadow-sm relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-20"><i data-lucide="calculator" class="w-20 h-20 text-pink-500"></i></div>
+                    <h3 class="text-xl font-bold text-pink-600 mb-4 flex items-center gap-2">
+                        <i data-lucide="zap"></i> 詐騙拆解公式
+                    </h3>
+                    <div class="flex flex-wrap gap-2 text-lg font-bold text-slate-700">
+                        <span class="bg-white px-3 py-1 rounded-lg shadow-sm">假身份</span> +
+                        <span class="bg-white px-3 py-1 rounded-lg shadow-sm">假情境</span> +
+                        <span class="bg-white px-3 py-1 rounded-lg shadow-sm text-red-500">急迫感</span> +
+                        <span class="bg-white px-3 py-1 rounded-lg shadow-sm text-yellow-600">金錢要求</span> +
+                        <span class="bg-white px-3 py-1 rounded-lg shadow-sm">阻止查證</span>
+                        = <span class="bg-red-500 text-white px-4 py-1 rounded-lg shadow-sm animate-pulse">詐騙！</span>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-6 border border-blue-100 shadow-sm relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-20"><i data-lucide="shield" class="w-20 h-20 text-blue-500"></i></div>
+                    <h3 class="text-xl font-bold text-blue-600 mb-4 flex items-center gap-2">
+                        <i data-lucide="hand"></i> 防詐 5 不
+                    </h3>
+                    <ul class="space-y-2 text-slate-700 font-medium">
+                        <li class="flex items-center gap-2"><i data-lucide="x-circle" class="w-5 h-5 text-red-400"></i> 不接不明來電</li>
+                        <li class="flex items-center gap-2"><i data-lucide="x-circle" class="w-5 h-5 text-red-400"></i> 不聽網友投資</li>
+                        <li class="flex items-center gap-2"><i data-lucide="x-circle" class="w-5 h-5 text-red-400"></i> 不點不明連結</li>
+                        <li class="flex items-center gap-2"><i data-lucide="x-circle" class="w-5 h-5 text-red-400"></i> 不傳個資帳密</li>
+                        <li class="flex items-center gap-2"><i data-lucide="x-circle" class="w-5 h-5 text-red-400"></i> 不信保證獲利</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="fraud-cards-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Fraud Cards will be generated by JS -->
+            </div>
+        </section>
+
+        <!-- Step 2: 20 個反詐騙繪本題材靈感 -->
+        <section id="step-2" class="step-content">
+             <div class="text-center mb-10">
+                <h2 class="text-3xl font-black mb-4 text-slate-700">💡 20 個反詐騙繪本題材靈感</h2>
+                <p class="text-slate-500 text-lg">不知道要畫什麼嗎？點擊下方你喜歡的靈感，會自動帶入你的故事主題喔！</p>
+            </div>
+            <div id="inspiration-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <!-- Inspiration Cards generated by JS -->
+            </div>
+        </section>
+
+        <!-- Step 3: 學生基本資料 -->
+        <section id="step-3" class="step-content">
+            <div class="max-w-2xl mx-auto bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
+                <div class="text-center mb-8">
+                    <div class="inline-block bg-teal-100 p-4 rounded-full mb-4">
+                        <i data-lucide="user" class="w-10 h-10 text-teal-600"></i>
+                    </div>
+                    <h2 class="text-3xl font-black text-slate-700">📝 設計師報到</h2>
+                    <p class="text-slate-500 mt-2">請填寫你的基本資料與故事主題</p>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">班級</label>
+                            <select id="className" class="w-full bg-gray-50 border border-gray-200 text-gray-700 rounded-xl focus:ring-4 focus:ring-teal-100 focus:border-teal-400 block p-3 transition-all">
+                                <option value="">請選擇</option>
+                                <option value="801">801</option>
+                                <option value="802">802</option>
+                                <option value="803">803</option>
+                                <option value="804">804</option>
+                                <option value="805">805</option>
+                                <option value="806">806</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">座號</label>
+                            <input type="number" id="seatNumber" class="w-full bg-gray-50 border border-gray-200 text-gray-700 rounded-xl focus:ring-4 focus:ring-teal-100 focus:border-teal-400 block p-3 transition-all" placeholder="例如: 15">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">姓名</label>
+                        <input type="text" id="studentName" class="w-full bg-gray-50 border border-gray-200 text-gray-700 rounded-xl focus:ring-4 focus:ring-teal-100 focus:border-teal-400 block p-3 transition-all" placeholder="你的名字">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">故事主題 <span class="text-xs text-teal-500 font-normal">(可自己修改)</span></label>
+                        <input type="text" id="storyTopic" class="w-full bg-gray-50 border border-gray-200 text-gray-700 rounded-xl focus:ring-4 focus:ring-teal-100 focus:border-teal-400 block p-3 transition-all" placeholder="例如：假班導師 LINE 說要代收班費">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 4: C1～C6 文本鷹架 -->
+        <section id="step-4" class="step-content">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-black mb-4 text-slate-700">🎨 繪本故事與 AI 提示詞設計 (C1~C6)</h2>
+                <p class="text-slate-500 text-lg">跟著步驟，把腦中的畫面變成文字，這將成為 AI 幫你畫圖的咒語喔！</p>
+            </div>
+
+            <div id="scaffold-container" class="space-y-6">
+                <!-- C1-C6 generated by JS -->
+            </div>
+        </section>
+
+        <!-- Step 5: 製作動機／學習心得 -->
+        <section id="step-5" class="step-content">
+            <div class="max-w-3xl mx-auto bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
+                <div class="text-center mb-8">
+                    <div class="inline-block bg-orange-100 p-4 rounded-full mb-4">
+                        <i data-lucide="message-circle-heart" class="w-10 h-10 text-orange-500"></i>
+                    </div>
+                    <h2 class="text-3xl font-black text-slate-700">💭 創作心得</h2>
+                </div>
+
+                <label class="block text-lg font-bold text-gray-700 mb-4">你為什麼想創作這則反詐騙繪本？你希望讀者學到什麼？</label>
+                
+                <div class="bg-orange-50 rounded-xl p-4 mb-4 text-orange-700 text-sm border border-orange-100">
+                    <p class="font-bold mb-1"><i data-lucide="lightbulb" class="inline w-4 h-4 mr-1"></i> 提示句，你可以這樣寫：</p>
+                    <ul class="list-disc list-inside space-y-1 ml-2">
+                        <li>我選擇這個主題，是因為＿＿。</li>
+                        <li>我希望讀者看完後，可以學會＿＿。</li>
+                        <li>我覺得防詐最重要的是＿＿。</li>
+                    </ul>
+                </div>
+
+                <textarea id="motivation" rows="6" class="w-full bg-gray-50 border border-gray-200 text-gray-700 rounded-xl focus:ring-4 focus:ring-orange-100 focus:border-orange-400 block p-4 transition-all resize-none text-lg leading-relaxed" placeholder="在這裡寫下你的想法..."></textarea>
+            </div>
+        </section>
+
+        <!-- Step 6: 即時預覽 & 送出 -->
+        <section id="step-6" class="step-content">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-black mb-4 text-slate-700">🎉 完成囉！預覽你的創作</h2>
+                <p class="text-slate-500 text-lg">確認沒有問題後，就可以複製文字並送出作業了！</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+                <!-- Story Summary -->
+                <div class="bg-white rounded-3xl p-6 md:p-8 shadow-lg border border-gray-100 h-full flex flex-col">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-2xl font-bold text-indigo-600 flex items-center gap-2">
+                            <i data-lucide="book-open"></i> 📖 故事大綱
+                        </h3>
+                        <button onclick="copyContent('preview-summary')" class="text-sm bg-indigo-50 text-indigo-600 hover:bg-indigo-100 px-4 py-2 rounded-lg font-bold transition-colors flex items-center gap-2">
+                            <i data-lucide="copy" class="w-4 h-4"></i> 複製大綱
+                        </button>
+                    </div>
+                    <div id="preview-summary" class="bg-indigo-50/50 rounded-2xl p-6 text-slate-700 leading-relaxed flex-grow whitespace-pre-wrap border border-indigo-100/50">
+                        <!-- Filled by JS -->
+                    </div>
+                </div>
+
+                <!-- AI Prompt -->
+                <div class="bg-gray-900 rounded-3xl p-6 md:p-8 shadow-lg h-full flex flex-col relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10"><i data-lucide="bot" class="w-32 h-32 text-green-500"></i></div>
+                    <div class="flex items-center justify-between mb-6 relative z-10">
+                        <h3 class="text-2xl font-bold text-green-400 flex items-center gap-2">
+                            <i data-lucide="sparkles"></i> ✨ AI 生圖提示詞
+                        </h3>
+                        <button onclick="copyContent('preview-prompt')" class="text-sm bg-green-500/20 text-green-400 hover:bg-green-500/30 px-4 py-2 rounded-lg font-bold transition-colors flex items-center gap-2 border border-green-500/30">
+                            <i data-lucide="copy" class="w-4 h-4"></i> 複製咒語
+                        </button>
+                    </div>
+                    <div id="preview-prompt" class="font-mono text-green-300 bg-black/30 rounded-2xl p-6 leading-relaxed flex-grow whitespace-pre-wrap border border-gray-700 relative z-10">
+                        <!-- Filled by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-center mt-12">
+                <button onclick="submitData()" class="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-white bg-gradient-to-r from-pink-500 to-orange-500 rounded-full shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all text-xl overflow-hidden">
+                    <span class="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-black"></span>
+                    <i data-lucide="send" class="w-6 h-6 mr-2 group-hover:rotate-12 transition-transform"></i>
+                    確認送出到試算表
+                </button>
+            </div>
+        </section>
+
+        <!-- Navigation Buttons -->
+        <div class="flex justify-between items-center mt-12 pt-6 border-t border-gray-200" id="nav-buttons">
+            <button id="btn-prev" onclick="prevStep()" class="hidden px-6 py-3 rounded-xl font-bold text-slate-600 bg-white border border-gray-200 shadow-sm hover:bg-gray-50 transition-colors items-center gap-2">
+                <i data-lucide="arrow-left" class="w-5 h-5"></i> 上一步
+            </button>
+            <div class="flex-grow"></div>
+            <button id="btn-next" onclick="nextStep()" class="px-6 py-3 rounded-xl font-bold text-white bg-slate-800 shadow-md hover:bg-slate-700 transition-colors flex items-center gap-2">
+                下一步 <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+    </main>
+
+    <script>
+        /* ==========================================
+           設定區 (請在此處貼上您的 GAS URL)
+           ========================================== */
+        // 若要測試實際送出，請將下方 URL 替換為您的 Google Apps Script Web App URL
+        const GAS_URL = "https://script.google.com/macros/s/AKfycbxK-Kf6aN-zU-0wwyptICSK6N3eWFtFw9fW1BCppww__kyjfVh9-M6vhbnQmK3D-6Ax/exec"; 
+
+        /* ==========================================
+           資料定義
+           ========================================== */
+        const fraudTypes = [
+            { name: "假投資詐騙", talk: "保證獲利、穩賺不賠、老師帶你操作、AI 選股神器", feature: "常出現在 LINE 群組、社群廣告，先讓人看到假獲利，再要求加碼或繳保證金。", alert: "聽到保證獲利、要求加 LINE 投資，都是高風險。", icon: "trending-up", color: "text-emerald-500", bg: "bg-emerald-50" },
+            { name: "假網拍詐騙", talk: "限時特價、最後一件、超低價、先匯款才保留", feature: "假賣場、假商品、假演唱會票、假遊戲帳號交易。", alert: "太便宜要懷疑，交易前查評價與平台安全性。", icon: "shopping-cart", color: "text-amber-500", bg: "bg-amber-50" },
+            { name: "解除分期付款", talk: "訂單錯誤、誤設分期、需要解除設定、請操作 ATM", feature: "假冒客服或銀行，製造緊張感，要求操作金融帳戶。", alert: "ATM 絕對沒有解除分期付款的功能。", icon: "credit-card", color: "text-rose-500", bg: "bg-rose-50" },
+            { name: "假交友投資", talk: "我很懂你、一起賺錢、這為了我們的未來", feature: "先培養感情，再導入投資平台。", alert: "未曾見面的網友談感情又談錢，要立刻警覺。", icon: "heart-handshake", color: "text-pink-500", bg: "bg-pink-50" },
+            { name: "騙取人頭帳戶", talk: "借帳戶收款、幫忙領錢、工作需要存摺或提款卡", feature: "可能讓學生或民眾不知不覺變成詐騙共犯。", alert: "帳戶、提款卡、密碼絕對不能交給任何人。", icon: "wallet", color: "text-indigo-500", bg: "bg-indigo-50" },
+            { name: "假冒檢警詐騙", talk: "你涉及案件、帳戶要監管、不能告訴家人", feature: "利用恐懼與權威感控制受害者。", alert: "檢警單位不會要求交付帳戶或匯款監管。", icon: "gavel", color: "text-slate-700", bg: "bg-slate-100" },
+            { name: "遊戲點數/帳號", talk: "免費送造型、代儲比較便宜、借帳號幫你升級", feature: "常出現在遊戲聊天室、Discord、社群平台。", alert: "帳號密碼不能外借，免費通常最貴。", icon: "gamepad-2", color: "text-violet-500", bg: "bg-violet-50" },
+            { name: "假物流簡訊", talk: "包裹異常、補繳運費、點連結查詢", feature: "誘導點擊假網站，偷取帳密或信用卡資料。", alert: "不要點不明簡訊連結，請到官方 App 查詢。", icon: "package", color: "text-orange-500", bg: "bg-orange-50" },
+            { name: "假打工詐騙", talk: "在家打字、日領高薪、免經驗、先繳保證金", feature: "利用學生想賺零用錢的心理。", alert: "要求先繳錢或提供帳戶的工作都要小心。", icon: "briefcase", color: "text-cyan-500", bg: "bg-cyan-50" },
+            { name: "AI 深偽詐騙", talk: "我是你朋友/家人，我現在急需用錢", feature: "使用 AI 換臉、AI 仿聲、假照片、假影片。", alert: "眼見不一定為憑，聽到也不一定真，需掛斷並用其他方式查證。", icon: "bot", color: "text-fuchsia-500", bg: "bg-fuchsia-50" }
+        ];
+
+        const inspirations = [
+            "免費送傳說造型，結果遊戲帳號被盜", "假班導師 LINE 說要代收班費", "IG 帥哥每天聊天，最後要求借錢", "假客服說訂單誤設分期",
+            "點進假演唱會門票網站", "Discord 網友說可以便宜代儲", "阿公加入 AI 飆股投資群", "同學帳號被盜後傳訊息借錢",
+            "AI 換臉影片騙家長匯款", "假抽獎要求填信用卡資料", "免費貼圖連結偷走帳號", "假網紅推薦投資平台",
+            "遊戲代打變成帳號詐騙", "限時球鞋特價是假網站", "假物流簡訊要求補繳運費", "假公益募款直播騙愛心",
+            "假學長分享賺零用錢方法", "AI 語音模仿媽媽要求轉帳", "在家打字月入十萬其實是詐騙", "朋友傳來「這是你嗎？」的釣魚連結"
+        ];
+
+        const scaffolds = [
+            { id: "c1", title: "C1 角色描述", aiTag: "理解 AI", tagColor: "bg-blue-100 text-blue-700", desc: "是否描述主要角色或主體。", q: "誰遇到詐騙？他的年齡、身份、個性是什麼？", ex: "一位單純的國三學生小明，平常喜歡玩手機遊戲..." },
+            { id: "c2", title: "C2 場景描述", aiTag: "理解 AI", tagColor: "bg-blue-100 text-blue-700", desc: "是否描述環境或地點。", q: "故事發生在哪裡？教室、家中、捷運、遊戲聊天室，還是社群平台？", ex: "故事發生在夜晚的房間裡，只有手機螢幕亮著..." },
+            { id: "c3", title: "C3 動作／情緒", aiTag: "應用 AI", tagColor: "bg-green-100 text-green-700", desc: "是否描述行為或情感。", q: "主角看到詐騙訊息後做了什麼？他的心情如何？", ex: "他看到限量球鞋的廣告後，感到非常興奮與焦急，於是立刻點擊了連結..." },
+            { id: "c4", title: "C4 風格描述", aiTag: "應用 AI", tagColor: "bg-green-100 text-green-700", desc: "是否描述藝術風格。", q: "繪本想做成什麼風格？可愛漫畫、日系動畫、水彩、童話、懸疑風？", ex: "整體畫面呈現日系動漫風格，線條細膩..." },
+            { id: "c5", title: "C5 色彩／光線", aiTag: "應用 AI", tagColor: "bg-green-100 text-green-700", desc: "是否描述色彩或光影。", q: "畫面是明亮、溫暖、緊張、詭異，還是警示感？", ex: "畫面使用暗色調為主，搭配手機螢幕發出的幽暗藍光，製造緊張感..." },
+            { id: "c6", title: "C6 細節／配件", aiTag: "思辨 AI", tagColor: "bg-purple-100 text-purple-700", desc: "是否描述附加細節。", q: "畫面中有哪些防詐線索？手機訊息、假網站、ATM、警告標誌、165 專線？", ex: "畫面背景隱約出現 165 反詐騙專線的標誌，且手機畫面上方有紅色的警告圖示..." }
+        ];
+
+        const alertKeywords = ['匯款', 'ATM', 'atm', '保證獲利', '帳號密碼', '不明連結', '投資群', '代儲', '解除分期', '點數', '保證金', '警察', '檢察官'];
+
+        /* ==========================================
+           初始化 DOM 與渲染
+           ========================================== */
+        let currentStep = 1;
+        const totalSteps = 6;
+
+        function init() {
+            renderFraudCards();
+            renderInspirations();
+            renderScaffolds();
+            lucide.createIcons();
+            updateUI();
+        }
+
+        function renderFraudCards() {
+            const container = document.getElementById('fraud-cards-container');
+            container.innerHTML = fraudTypes.map(f => `
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group relative overflow-hidden">
+                    <div class="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform duration-500">
+                        <i data-lucide="${f.icon}" class="w-32 h-32 ${f.color}"></i>
+                    </div>
+                    <div class="flex items-center gap-3 mb-4 relative z-10">
+                        <div class="${f.bg} p-3 rounded-xl">
+                            <i data-lucide="${f.icon}" class="w-6 h-6 ${f.color}"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800">${f.name}</h3>
+                    </div>
+                    <div class="space-y-3 text-sm relative z-10">
+                        <p><span class="font-bold text-slate-600 bg-gray-100 px-2 py-1 rounded text-xs mr-1">話術</span> <span class="text-slate-700">${f.talk}</span></p>
+                        <p><span class="font-bold text-slate-600 bg-gray-100 px-2 py-1 rounded text-xs mr-1">特色</span> <span class="text-slate-600">${f.feature}</span></p>
+                        <p class="pt-2 border-t border-red-50 mt-2"><span class="font-bold text-red-600 bg-red-50 px-2 py-1 rounded text-xs mr-1">提醒</span> <span class="text-red-600 font-medium">${f.alert}</span></p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderInspirations() {
+            const container = document.getElementById('inspiration-container');
+            container.innerHTML = inspirations.map((text, i) => `
+                <button onclick="selectInspiration('${text}')" class="text-left bg-white p-4 rounded-xl shadow-sm border border-gray-100 hover:border-teal-400 hover:shadow-md transition-all group flex flex-col h-full">
+                    <div class="text-teal-200 mb-2 group-hover:text-teal-400 transition-colors"><i data-lucide="lightbulb" class="w-6 h-6"></i></div>
+                    <span class="text-slate-700 font-medium text-sm flex-grow">${text}</span>
+                </button>
+            `).join('');
+        }
+
+        function selectInspiration(text) {
+            document.getElementById('storyTopic').value = text;
+            Swal.fire({
+                title: '已帶入主題！',
+                text: `「${text}」`,
+                icon: 'success',
+                timer: 1500,
+                showConfirmButton: false
+            }).then(() => {
+                currentStep = 3;
+                updateUI();
+            });
+        }
+
+        function renderScaffolds() {
+            const container = document.getElementById('scaffold-container');
+            container.innerHTML = scaffolds.map(s => `
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 relative">
+                    <div class="flex flex-wrap items-center justify-between mb-3 gap-2">
+                        <div class="flex items-center gap-3">
+                            <h3 class="text-xl font-bold text-slate-800">${s.title}</h3>
+                            <span class="px-3 py-1 rounded-full text-xs font-bold ${s.tagColor} border border-white shadow-sm flex items-center gap-1">
+                                <i data-lucide="cpu" class="w-3 h-3"></i> ${s.aiTag}
+                            </span>
+                        </div>
+                        <button onclick="showHint('${s.title}', '${s.ex}')" class="text-sm bg-gray-50 text-gray-500 hover:bg-teal-50 hover:text-teal-600 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1 border border-gray-200">
+                            <i data-lucide="help-circle" class="w-4 h-4"></i> 看範例
+                        </button>
+                    </div>
+                    
+                    <p class="text-sm text-slate-500 mb-1"><span class="font-bold text-slate-600">說明：</span>${s.desc}</p>
+                    <p class="text-sm text-indigo-600 font-bold mb-4 bg-indigo-50 inline-block px-3 py-1 rounded-lg"><i data-lucide="message-circle-question" class="inline w-4 h-4 mr-1"></i>${s.q}</p>
+                    
+                    <textarea id="${s.id}" rows="3" class="w-full bg-gray-50 border border-gray-200 text-gray-800 rounded-xl focus:ring-4 focus:ring-teal-100 focus:border-teal-400 block p-4 transition-all resize-none text-base" placeholder="請在此輸入..."></textarea>
+                    
+                    <div class="flex justify-between items-center mt-2">
+                        <div class="text-xs text-gray-400 font-mono"><span id="count-${s.id}">0</span> 字</div>
+                        <div id="alert-${s.id}" class="hidden flex items-center gap-1 text-xs font-bold text-red-500 bg-red-50 px-2 py-1 rounded-md animate-pulse">
+                            <i data-lucide="siren" class="w-3 h-3"></i> 偵測到詐騙關鍵字！
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Add Event Listeners for textareas
+            scaffolds.forEach(s => {
+                const ta = document.getElementById(s.id);
+                ta.addEventListener('input', function() {
+                    // Word count
+                    document.getElementById(`count-${s.id}`).innerText = this.value.length;
+                    
+                    // Keyword detection
+                    const found = alertKeywords.some(kw => this.value.includes(kw));
+                    const alertDiv = document.getElementById(`alert-${s.id}`);
+                    if(found) {
+                        alertDiv.classList.remove('hidden');
+                    } else {
+                        alertDiv.classList.add('hidden');
+                    }
+                });
+            });
+        }
+
+        function showHint(title, example) {
+            Swal.fire({
+                title: title + ' 範例',
+                text: example,
+                icon: 'info',
+                confirmButtonText: '了解',
+                confirmButtonColor: '#14b8a6'
+            });
+        }
+
+        /* ==========================================
+           導覽與邏輯
+           ========================================== */
+        function updateUI() {
+            // Hide all steps
+            document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
+            // Show current step
+            document.getElementById(`step-${currentStep}`).classList.add('active');
+            
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Update Progress bar & text
+            const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
+            document.getElementById('progress-bar').style.width = `${progress}%`;
+            document.getElementById('step-indicator').innerText = `步驟 ${currentStep} / ${totalSteps}`;
+
+            // Buttons
+            const btnPrev = document.getElementById('btn-prev');
+            const btnNext = document.getElementById('btn-next');
+
+            if (currentStep === 1) {
+                btnPrev.classList.add('hidden');
+            } else {
+                btnPrev.classList.remove('hidden');
+            }
+
+            if (currentStep === totalSteps) {
+                btnNext.classList.add('hidden');
+                generatePreview(); // Generate preview when entering step 6
+            } else {
+                btnNext.classList.remove('hidden');
+            }
+            
+            lucide.createIcons(); // Re-init icons in case of dynamic content
+        }
+
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                // Validation before moving
+                if(currentStep === 3) {
+                    if(!document.getElementById('className').value || !document.getElementById('studentName').value || !document.getElementById('storyTopic').value) {
+                        Swal.fire({ icon: 'warning', title: '請填寫完整', text: '班級、姓名、故事主題為必填項目喔！' });
+                        return;
+                    }
+                }
+                currentStep++;
+                updateUI();
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateUI();
+            }
+        }
+
+        function generatePreview() {
+            const classN = document.getElementById('className').value;
+            const seat = document.getElementById('seatNumber').value;
+            const name = document.getElementById('studentName').value;
+            const topic = document.getElementById('storyTopic').value;
+            const motivation = document.getElementById('motivation').value;
+
+            // Combine C1-C6 for Prompt
+            let promptText = "";
+            let summaryText = `【${classN}班 ${seat}號 ${name} 的防詐繪本企劃】\n\n`;
+            summaryText += `📌 故事主題：${topic}\n\n`;
+            
+            scaffolds.forEach(s => {
+                const val = document.getElementById(s.id).value.trim();
+                if(val) {
+                    promptText += val + ", ";
+                    summaryText += `📍 ${s.title.split(' ')[0]}：${val}\n`;
+                }
+            });
+
+            // Clean trailing comma
+            if(promptText.endsWith(", ")) promptText = promptText.slice(0, -2);
+            if(!promptText) promptText = "(尚無輸入內容)";
+
+            summaryText += `\n💭 創作心得：\n${motivation || '(尚無輸入內容)'}`;
+
+            document.getElementById('preview-prompt').innerText = promptText;
+            document.getElementById('preview-summary').innerText = summaryText;
+        }
+
+        function copyContent(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                Swal.fire({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'success',
+                    title: '已複製到剪貼簿',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }).catch(err => {
+                console.error('Copy failed', err);
+                Swal.fire('錯誤', '複製失敗，請手動選取複製。', 'error');
+            });
+        }
+
+        function checkFormValidity() {
+            const requiredIds = ['className', 'studentName', 'storyTopic', 'c1', 'c2', 'c3', 'c4', 'c5', 'c6'];
+            let isValid = true;
+            requiredIds.forEach(id => {
+                if(!document.getElementById(id).value.trim()) isValid = false;
+            });
+            return isValid;
+        }
+
+        async function submitData() {
+            if (!checkFormValidity()) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: '還有欄位空著喔！',
+                    text: '請確認 基本資料 與 C1~C6 都有填寫內容才能送出。',
+                    confirmButtonColor: '#f97316'
+                });
+                return;
+            }
+
+            const payload = {
+                timestamp: new Date().toISOString(),
+                className: document.getElementById('className').value,
+                seatNumber: document.getElementById('seatNumber').value,
+                studentName: document.getElementById('studentName').value,
+                storyTopic: document.getElementById('storyTopic').value,
+                c1_role: document.getElementById('c1').value,
+                c2_scene: document.getElementById('c2').value,
+                c3_actionEmotion: document.getElementById('c3').value,
+                c4_style: document.getElementById('c4').value,
+                c5_colorLight: document.getElementById('c5').value,
+                c6_details: document.getElementById('c6').value,
+                motivation: document.getElementById('motivation').value,
+                storySummary: document.getElementById('preview-summary').innerText,
+                aiPrompt: document.getElementById('preview-prompt').innerText
+            };
+
+            Swal.fire({
+                title: '上傳中...',
+                text: '正在將你的創意送出，請稍候。',
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+
+            try {
+                // 這裡發送請求到 GAS。如果遇到 CORS 錯誤，通常 GAS 端需設定允許跨域，或使用 mode: 'no-cors' (但無法讀取 response)。
+                // 這裡使用標準 POST，假設 GAS doPost 有正確處理。
+                const response = await fetch(GAS_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'text/plain;charset=utf-8', // 使用 text/plain 避免 preflight options
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                // 因為 GAS 回傳可能無法直接 parsing，或者使用 no-cors，我們預設只要 fetch 沒拋出 exception 就當作成功。
+                Swal.fire({
+                    icon: 'success',
+                    title: '送出成功！',
+                    text: '你的反詐騙繪本故事已完成上傳。太棒了！',
+                    confirmButtonColor: '#ec4899'
+                });
+
+            } catch (error) {
+                console.error("Submit Error:", error);
+                // 為了展示順暢，即使沒有真實 URL，若 catch 報錯，也會顯示友善提示
+                Swal.fire({
+                    icon: 'error',
+                    title: '送出失敗',
+                    text: '請檢查網路狀態，或確認老師提供的 GAS URL 是否正確。',
+                    footer: '<span class="text-xs text-gray-400">開發者註：請確認 GAS_URL 變數已正確設定。</span>'
+                });
+            }
+        }
+
+        // Initialize App
+        window.onload = init;
+
+    </script>
+</body>
+</html>
