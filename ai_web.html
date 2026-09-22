@@ -69,6 +69,11 @@
                     <i class="fa-regular fa-floppy-disk text-emerald-400"></i>
                     <span id="saveStatusText" class="text-sky-100">自動儲存草稿中</span>
                 </div>
+                <!-- 整合 GAS 學生紀錄系統連結 -->
+                <a href="https://script.google.com/macros/s/AKfycbwQHSdR2hbgi-m5RskjZ3ZDot7DNl0QMB920gofugjiLKX_AN7rpWHq1cz6GPfe33hY/exec" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-200 border border-emerald-400/30 rounded-lg transition flex items-center gap-1.5 font-medium">
+                    <i class="fa-solid fa-clipboard-list text-xs"></i>
+                    <span>學生紀錄系統</span>
+                </a>
                 <button onclick="resetData()" class="px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded-lg border border-white/20 transition flex items-center gap-1.5">
                     <i class="fa-solid fa-rotate-left text-xs"></i>
                     <span>重新填寫</span>
@@ -547,7 +552,12 @@
                             <i class="fa-solid fa-book-open text-sky-600"></i>
                             <span>AI 故事教練整理完成之故事腳本</span>
                         </h3>
-                        <div class="flex gap-2">
+                        <div class="flex flex-wrap gap-2">
+                            <!-- Step 7 登記系統快捷連結 -->
+                            <a href="https://script.google.com/macros/s/AKfycbwQHSdR2hbgi-m5RskjZ3ZDot7DNl0QMB920gofugjiLKX_AN7rpWHq1cz6GPfe33hY/exec" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg transition flex items-center gap-1 shadow-sm">
+                                <i class="fa-solid fa-file-pen"></i>
+                                <span>開啟 GAS 學生紀錄登記</span>
+                            </a>
                             <button onclick="copyToClipboard(document.getElementById('aiResultOutput').innerText)" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg border border-slate-300 transition flex items-center gap-1">
                                 <i class="fa-regular fa-copy"></i>
                                 <span>複製全劇本</span>
