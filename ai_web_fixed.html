@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="h-full bg-slate-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔎 AI 校園觀察家｜我的校園，我來說故事</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            700: '#075985',
+                        },
+                        accent: {
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', ' PingFang TC', 'Microsoft JhengHei', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Scrollbar & Printing Styles -->
+    <style>
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        @media print {
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+            body { background: white; color: black; }
+        }
+    </style>
+</head>
+<body class="h-full text-slate-800 flex flex-col font-sans selection:bg-sky-200 selection:text-sky-900">
+
+    <!-- Top Header -->
+    <header class="bg-gradient-to-r from-sky-700 via-sky-600 to-indigo-700 text-white shadow-md sticky top-0 z-30 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-white/10 backdrop-blur flex items-center justify-center text-xl shadow-inner border border-white/20">
+                    🔎
+                </div>
+                <div>
+                    <h1 class="text-lg sm:text-xl font-bold tracking-tight flex items-center gap-2">
+                        AI 校園觀察家
+                        <span class="text-xs bg-amber-400 text-slate-900 px-2 py-0.5 rounded-full font-extrabold uppercase">學習鷹架 App</span>
+                    </h1>
+                    <p class="text-xs text-sky-100 hidden sm:block">我的校園，我來說故事・觀察 ➔ 發現 ➔ 思考 ➔ 提案 ➔ 故事 ➔ AI協作</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm">
+                <div class="hidden md:flex items-center gap-2 bg-black/20 px-3 py-1.5 rounded-lg border border-white/10">
+                    <i class="fa-solid fa-cloud-arrow-up text-emerald-400"></i>
+                    <span class="text-sky-100">完成後請正式繳交</span>
+                </div>
+                <!-- 整合 GAS 學生紀錄系統連結 -->
+                <a href="https://script.google.com/macros/s/AKfycbzMCC6iJI_2Uc8nolNvM_fGncFKhS4TC1KLvkz-TYL02auA_gdwqC-i8wUB7kXi9nvS/exec" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-200 border border-emerald-400/30 rounded-lg transition flex items-center gap-1.5 font-medium">
+                    <i class="fa-solid fa-clipboard-list text-xs"></i>
+                    <span>學生紀錄系統</span>
+                </a>
+                <button onclick="resetData()" class="px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded-lg border border-white/20 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-rotate-left text-xs"></i>
+                    <span>重新填寫</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Global Progress Bar -->
+        <div class="w-full bg-sky-900/40 h-1.5">
+            <div id="globalProgressBar" class="bg-gradient-to-r from-amber-400 to-emerald-400 h-1.5 transition-all duration-300 w-[14.28%]"></div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="flex-1 max-w-7xl w-full mx-auto px-2 sm:px-6 lg:px-8 py-4 sm:py-6 flex flex-col md:flex-row gap-6">
+
+        <!-- Step Navigation Sidebar -->
+        <aside class="w-full md:w-64 flex-shrink-0 no-print">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-3 sm:p-4 sticky top-20">
+                <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 px-2 mb-3 flex items-center justify-between">
+                    <span>探索流程 7 Steps</span>
+                    <span id="completedStepsCount" class="text-sky-600 bg-sky-50 px-2 py-0.5 rounded-full text-xs">1/7 完成</span>
+                </h2>
+
+                <nav class="space-y-1" id="stepNavButtons">
+                    <!-- Nav Items will be generated or styled by JS -->
+                    <button onclick="goToStep(1)" id="nav-step-1" class="step-nav-btn w-full text-left px-3 py-2.5 rounded-xl flex items-center gap-3 font-medium text-sm transition bg-sky-50 text-sky-700 border border-sky-200 shadow-sm">
+                        <span class="w-7 h-7 rounded-lg bg-sky-600 text-white flex items-center justify-center font-bold text-xs flex-shrink-0">1</span>
+                        <div class="truncate">
+                            <div class="truncate font-semibold">🔎 校園偵探出動</div>
+                            <div class="text-[10px] text-slate-500 truncate">認識校園觀察法</div>
+                        </div>
+                    </button>
+
+                    <button onclick="goToStep(2)" id="nav-step-2" class="step-nav-btn w-full text-left px-3 py-2.5 rounded-xl flex items-center gap-3 font-medium text-sm transition hover:bg-slate-100 text-slate-600">
+                        <span class="w-7 h-7 rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-xs flex-shrink-0">2</span>
+                        <div class="truncate">
+                            <div class="truncate font-semibold">💡 尋找故事靈感</div>
+                            <div class="text-[10px] text-slate-500 truncate">20 個校園觀察議題</div>
+                        </div>
+                    </button>
+
+                    <button onclick="goToStep(3)" id="nav-step-3" class="step-nav-btn w-full text-left px-3 py-2.5 rounded-xl flex items-center gap-3 font-medium text-sm transition hover:bg-slate-100 text-slate-600">
+                        <span class="w-7 h-7 rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-xs flex-shrink-0">3</span>
+                        <div class="truncate">
+                            <div class="truncate font-semibold">👀 我發現了什麼？</div>
+                            <div class="text-[10px] text-slate-500 truncate">真實觀察與問題定義</div>
+                        </div>
+                    </button>
+
+                    <button onclick="goToStep(4)" id="nav-step-4" class="step-nav-btn w-full text-left px-3 py-2.5 rounded-xl flex items-center gap-3 font-medium text-sm transition hover:bg-slate-100 text-slate-600">
+                        <span class="w-7 h-7 rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-xs flex-shrink-0">4</span>
+                        <div class="truncate">
+                            <div class="truncate font-semibold">❤️ 誰受到影響？</div>
+                            <div class="text-[10px] text-slate-500 truncate">人文關懷與主角設定</div>
+                        </div>
+                    </button>
+
+                    <button onclick="goToStep(5)" id="nav-step-5" class="step-nav-btn w-full text-left px-3 py-2.5 rounded-xl flex items-center gap-3 font-medium text-sm transition hover:bg-slate-100 text-slate-600">
+                        <span class="w-7 h-7 rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-xs flex-shrink-0">5</span>
+                        <div class="truncate">
+                            <div class="truncate font-semibold">🧠 如果可以改變？</div>
+                            <div class="text-[10px] text-slate-500 truncate">創意可行解決方案</div>
+                        </div>
+                    </button>
+
+                    <button onclick="goToStep(6)" id="nav-step-6" class="step-nav-btn w-full text-left px-3 py-2.5 rounded-xl flex items-center gap-3 font-medium text-sm transition hover:bg-slate-100 text-slate-600">
+                        <span class="w-7 h-7 rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-xs flex-shrink-0">6</span>
+                        <div class="truncate">
+                            <div class="truncate font-semibold">📖 六幕故事工作坊</div>
+                            <div class="text-[10px] text-slate-500 truncate">填寫 C1～C6 故事骨架</div>
+                        </div>
+                    </button>
+
+                    <button onclick="goToStep(7)" id="nav-step-7" class="step-nav-btn w-full text-left px-3 py-2.5 rounded-xl flex items-center gap-3 font-medium text-sm transition hover:bg-slate-100 text-slate-600">
+                        <span class="w-7 h-7 rounded-lg bg-amber-500 text-white flex items-center justify-center font-bold text-xs flex-shrink-0">7</span>
+                        <div class="truncate">
+                            <div class="truncate font-semibold">🤖 AI 故事魔法師</div>
+                            <div class="text-[10px] text-amber-600 font-medium truncate">請 AI 故事教練整理</div>
+                        </div>
+                    </button>
+                </nav>
+
+                <!-- Helpful Tip Box -->
+                <div class="mt-6 p-3 bg-amber-50 rounded-xl border border-amber-200/60 text-amber-800 text-xs">
+                    <div class="font-bold mb-1 flex items-center gap-1.5">
+                        <i class="fa-solid fa-lightbulb text-amber-500"></i>
+                        <span>校園觀察小秘訣</span>
+                    </div>
+                    <p class="text-amber-700 leading-relaxed">最好的繪本靈感來自於「用心眼睛看」，而非憑空想像。試著走一遍你每天經過的角落！</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="flex-1 bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-8 flex flex-col min-h-[600px]">
+
+            <!-- STEP 1: 校園偵探出動 -->
+            <section id="step-content-1" class="step-panel space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <span class="px-3 py-1 bg-sky-100 text-sky-800 font-semibold text-xs rounded-full inline-block mb-2">Step 1 / 7</span>
+                    <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-2">
+                        🔎 校園偵探出動！認識什麼叫「校園觀察」
+                    </h2>
+                    <p class="text-slate-600 mt-1 text-sm">在開始寫故事之前，讓我們訓練一下「觀察力眼睛」。真誠的觀察是創作出好故事的靈魂！</p>
+                </div>
+
+                <!-- Concept Card Showcase -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 flex flex-col items-start">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500 text-white flex items-center justify-center text-lg font-bold mb-3">
+                            <i class="fa-solid fa-eye"></i>
+                        </div>
+                        <h3 class="font-bold text-emerald-900 text-base mb-1">1. 用真實眼睛看</h3>
+                        <p class="text-xs text-emerald-800 leading-relaxed">
+                            不憑空想像，也不問 AI。走出教室，紀錄你在校園裡「真正親眼看見」的畫面、聽見的聲音與細節。
+                        </p>
+                    </div>
+
+                    <div class="bg-indigo-50 border border-indigo-200 rounded-2xl p-4 flex flex-col items-start">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-500 text-white flex items-center justify-center text-lg font-bold mb-3">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                        </div>
+                        <h3 class="font-bold text-indigo-900 text-base mb-1">2. 用同理心去感受</h3>
+                        <p class="text-xs text-indigo-800 leading-relaxed">
+                            不僅是發現問題，更是關心「誰受到了影響？」。老師、同學、打掃阿姨或是校園裡的浪貓樹木？
+                        </p>
+                    </div>
+
+                    <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 flex flex-col items-start">
+                        <div class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center text-lg font-bold mb-3">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <h3 class="font-bold text-amber-900 text-base mb-1">3. 用創意與 AI 協作</h3>
+                        <p class="text-xs text-amber-800 leading-relaxed">
+                            提出在國中校園能實踐的小點子，最後由 AI 故事教練協助修順故事、製作繪本分鏡提示詞！
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Detective Warm-Up Quiz Card -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-4">
+                    <h3 class="font-bold text-slate-800 text-base flex items-center gap-2">
+                        <i class="fa-solid fa-circle-question text-sky-600"></i>
+                        <span>小偵探辨識測驗：哪一個才是「真正的校園觀察」？</span>
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <button onclick="checkDetectiveQuiz(false)" class="p-4 bg-white border border-slate-200 rounded-xl text-left hover:border-red-400 hover:bg-red-50/50 transition group">
+                            <div class="text-xs font-bold text-slate-400 group-hover:text-red-500 mb-1">選項 A</div>
+                            <div class="text-sm text-slate-700 font-medium">「我覺得大家都不愛環保，垃圾桶一定都很亂。」</div>
+                            <div class="text-[11px] text-slate-400 mt-2">（個人主觀刻板印象，沒有具體觀察）</div>
+                        </button>
+
+                        <button onclick="checkDetectiveQuiz(true)" class="p-4 bg-white border border-slate-200 rounded-xl text-left hover:border-emerald-500 hover:bg-emerald-50/50 transition group">
+                            <div class="text-xs font-bold text-slate-400 group-hover:text-emerald-600 mb-1">選項 B</div>
+                            <div class="text-sm text-slate-700 font-medium">「中午打飯後，回收桶旁邊常積了三桶廚餘，打掃同學滿頭大汗在分類。」</div>
+                            <div class="text-[11px] text-slate-400 mt-2">（有具體地點、人物現象與情感體驗）</div>
+                        </button>
+                    </div>
+                    <div id="quizFeedback" class="hidden p-3 rounded-xl text-xs font-medium"></div>
+                </div>
+
+                <div class="pt-4 flex justify-end">
+                    <button onclick="goToStep(2)" class="px-6 py-2.5 bg-sky-600 hover:bg-sky-700 text-white rounded-xl font-bold shadow-md shadow-sky-200 transition flex items-center gap-2">
+                        <span>下一步：尋找故事靈感</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- STEP 2: 尋找故事靈感 (20 校園議題) -->
+            <section id="step-content-2" class="step-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <span class="px-3 py-1 bg-sky-100 text-sky-800 font-semibold text-xs rounded-full inline-block mb-2">Step 2 / 7</span>
+                    <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-2">
+                        💡 尋找故事靈感：20 個校園觀察靈感卡片
+                    </h2>
+                    <p class="text-slate-600 mt-1 text-sm">點選一個你最感興趣或有感觸的議題卡片，系統會自動帶入你的故事主題！</p>
+                </div>
+
+                <!-- Current Selection Alert -->
+                <div id="selectedTopicBanner" class="bg-sky-50 border border-sky-200 rounded-xl p-3 flex items-center justify-between text-sm">
+                    <div class="flex items-center gap-2">
+                        <span class="text-sky-600 font-bold">目前已選擇主題：</span>
+                        <span id="currentTopicText" class="font-bold text-slate-800 bg-white px-3 py-1 rounded-lg border border-sky-200">尚未選擇（請點擊下方卡片）</span>
+                    </div>
+                    <button onclick="goToStep(3)" class="text-xs text-sky-700 font-bold hover:underline flex items-center gap-1">
+                        <span>確認並前往填寫觀察</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <!-- 20 Cards Grid -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3" id="topicCardsContainer">
+                    <!-- Cards dynamically inserted or template below -->
+                </div>
+
+                <div class="pt-4 flex justify-between items-center border-t border-slate-100">
+                    <button onclick="goToStep(1)" class="px-4 py-2 text-slate-500 hover:text-slate-800 text-sm font-medium">
+                        <i class="fa-solid fa-arrow-left text-xs mr-1"></i> 上一步
+                    </button>
+                    <button onclick="goToStep(3)" class="px-6 py-2.5 bg-sky-600 hover:bg-sky-700 text-white rounded-xl font-bold shadow-md transition flex items-center gap-2">
+                        <span>下一步：寫下我的發現</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- STEP 3: 我發現了什麼？ -->
+            <section id="step-content-3" class="step-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <span class="px-3 py-1 bg-sky-100 text-sky-800 font-semibold text-xs rounded-full inline-block mb-2">Step 3 / 7</span>
+                    <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-2">
+                        👀 我發現了什麼？真實校園問題定義
+                    </h2>
+                    <p class="text-slate-600 mt-1 text-sm">請寫下你在校園中真正的觀察，不要問 AI，用自己的眼睛看！這會是整套鷹架的靈魂。</p>
+                </div>
+
+                <div class="space-y-5">
+                    <!-- Topic Input -->
+                    <div>
+                        <label class="block text-sm font-bold text-slate-800 mb-1">我的故事主題名稱</label>
+                        <input type="text" id="inputTopic" placeholder="例如：🍱 桶餐剩食小偵探" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 text-sm">
+                    </div>
+
+                    <!-- Essential Field: 📸 我真的看到什麼？ -->
+                    <div class="bg-amber-50/70 border border-amber-200 rounded-2xl p-4 space-y-2">
+                        <label class="block text-sm font-bold text-amber-900 flex items-center gap-2">
+                            <span class="text-lg">📸</span>
+                            <span>我真的看到什麼？（靈魂關鍵欄位）</span>
+                            <span class="text-xs bg-amber-200 text-amber-900 px-2 py-0.5 rounded font-normal">親眼觀察具體細節</span>
+                        </label>
+                        <textarea id="inputObservation" rows="4" placeholder="請詳細寫下：你在哪裡？什麼時間？看到什麼具體畫面？聽見什麼？
+例如：每天中午12:35吃完飯後，班上的桶餐回收區總是有半桶滿滿的青菜跟炒肉，走廊上的廚餘桶旁邊也常溢出來..." class="w-full px-4 py-3 rounded-xl border border-amber-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 text-sm bg-white"></textarea>
+                        <p class="text-xs text-amber-700">💡 提示：越具體的畫面（人物動作、顏色、聲音、數量），故事會越感人！</p>
+                    </div>
+
+                    <!-- Problem statement -->
+                    <div>
+                        <label class="block text-sm font-bold text-slate-800 mb-1">我覺得這是一個問題，因為...</label>
+                        <textarea id="inputProblem" rows="3" placeholder="例如：食物浪費很可惜，而且打掃同學清理溢出的汁液非常辛苦，夏天還容易吸引蚊蠅與臭味..." class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 text-sm"></textarea>
+                    </div>
+                </div>
+
+                <div class="pt-4 flex justify-between items-center border-t border-slate-100">
+                    <button onclick="goToStep(2)" class="px-4 py-2 text-slate-500 hover:text-slate-800 text-sm font-medium">
+                        <i class="fa-solid fa-arrow-left text-xs mr-1"></i> 上一步
+                    </button>
+                    <button onclick="goToStep(4)" class="px-6 py-2.5 bg-sky-600 hover:bg-sky-700 text-white rounded-xl font-bold shadow-md transition flex items-center gap-2">
+                        <span>下一步：看見誰受到影響</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- STEP 4: 誰受到影響？ -->
+            <section id="step-content-4" class="step-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <span class="px-3 py-1 bg-sky-100 text-sky-800 font-semibold text-xs rounded-full inline-block mb-2">Step 4 / 7</span>
+                    <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-2">
+                        ❤️ 誰受到影響？人文關懷 ＋ 角色刻劃
+                    </h2>
+                    <p class="text-slate-600 mt-1 text-sm">好故事的核心在於同理心。這個問題影響了誰？他有什麼心情與感受？</p>
+                </div>
+
+                <div class="space-y-5">
+                    <div>
+                        <label class="block text-sm font-bold text-slate-800 mb-1">受影響的人或對象（故事的主角/配角）</label>
+                        <input type="text" id="inputPeople" placeholder="例如：午餐股長阿傑、負責清理廚餘的衛生隊員、阿姨、或是校園裡找不到乾淨水喝的小鳥" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 text-sm">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-slate-800 mb-1">他們可能的心情與感受</label>
+                        <textarea id="inputFeeling" rows="3" placeholder="例如：午餐股長覺得很無奈又心疼食物；負責清理的同學覺得很髒很辛苦，也很沮喪大家不配合..." class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 text-sm"></textarea>
+                    </div>
+
+                    <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-4 text-xs text-indigo-800 space-y-1">
+                        <div class="font-bold text-indigo-900 flex items-center gap-1.5">
+                            <i class="fa-solid fa-heart text-rose-500"></i>
+                            <span>思考靈感引導</span>
+                        </div>
+                        <p>故事如果只有「事情」，會像公文；有了「人的情緒與體諒」，才會打動聽眾與評判的心！</p>
+                    </div>
+                </div>
+
+                <div class="pt-4 flex justify-between items-center border-t border-slate-100">
+                    <button onclick="goToStep(3)" class="px-4 py-2 text-slate-500 hover:text-slate-800 text-sm font-medium">
+                        <i class="fa-solid fa-arrow-left text-xs mr-1"></i> 上一步
+                    </button>
+                    <button onclick="goToStep(5)" class="px-6 py-2.5 bg-sky-600 hover:bg-sky-700 text-white rounded-xl font-bold shadow-md transition flex items-center gap-2">
+                        <span>下一步：如果可以改變？</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- STEP 5: 如果可以改變？ -->
+            <section id="step-content-5" class="step-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <span class="px-3 py-1 bg-sky-100 text-sky-800 font-semibold text-xs rounded-full inline-block mb-2">Step 5 / 7</span>
+                    <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-2">
+                        🧠 如果可以改變？創意可行解決方案
+                    </h2>
+                    <p class="text-slate-600 mt-1 text-sm">提出一個具有創意、但在國中校園裡「真的能夠實踐」的改善構想。</p>
+                </div>
+
+                <div class="space-y-5">
+                    <div>
+                        <label class="block text-sm font-bold text-slate-800 mb-1">我想到的創意改善方法（可行提案）</label>
+                        <textarea id="inputSolution" rows="4" placeholder="例如：1. 舉辦『飯量自由選』問卷調查，請廚房調整肉菜比例
+2. 設計『剩食英雄排行榜』，剩食最少的班級可以獲得優先選歌播放權
+3. 設立『校園廚餘堆肥小花園』，讓剩食變成植栽的養分..." class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 text-sm"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-slate-800 mb-1">我希望這個故事告訴大家的核心理念（留給觀眾的思考）</label>
+                        <input type="text" id="inputMessage" placeholder="例如：珍惜每一粒糧食，就是對土地與辛苦煮飯阿姨最大的感謝！" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 text-sm">
+                    </div>
+                </div>
+
+                <div class="pt-4 flex justify-between items-center border-t border-slate-100">
+                    <button onclick="goToStep(4)" class="px-4 py-2 text-slate-500 hover:text-slate-800 text-sm font-medium">
+                        <i class="fa-solid fa-arrow-left text-xs mr-1"></i> 上一步
+                    </button>
+                    <button onclick="goToStep(6)" class="px-6 py-2.5 bg-sky-600 hover:bg-sky-700 text-white rounded-xl font-bold shadow-md transition flex items-center gap-2">
+                        <span>下一步：進入六幕故事工作坊</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- STEP 6: 六幕故事工作坊 C1~C6 -->
+            <section id="step-content-6" class="step-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4 flex flex-wrap justify-between items-end gap-2">
+                    <div>
+                        <span class="px-3 py-1 bg-sky-100 text-sky-800 font-semibold text-xs rounded-full inline-block mb-2">Step 6 / 7</span>
+                        <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-2">
+                            📖 六幕故事工作坊（C1 ～ C6）
+                        </h2>
+                        <p class="text-slate-600 mt-1 text-sm">不需要一開始就寫長文，每一幕回答簡短問題，故事骨架就完成囉！</p>
+                    </div>
+                    <button onclick="autoFillActsFromSteps()" class="px-3 py-1.5 bg-sky-50 hover:bg-sky-100 text-sky-700 border border-sky-300 rounded-lg text-xs font-bold transition flex items-center gap-1">
+                        <i class="fa-solid fa-wand-magic"></i> 根據 Step 3~5 自動套用草稿
+                    </button>
+                </div>
+
+                <!-- C1~C6 Form Cards Grid -->
+                <div class="space-y-4">
+                    <!-- C1 -->
+                    <div class="border border-slate-200 rounded-2xl p-4 bg-slate-50/50 hover:bg-white transition space-y-2">
+                        <div class="flex items-center gap-2 text-sky-700 font-bold text-sm">
+                            <span class="bg-sky-600 text-white px-2.5 py-0.5 rounded-lg text-xs">C1</span>
+                            <span>平常的校園（背景與平常生活）</span>
+                        </div>
+                        <p class="text-xs text-slate-500">【提示】主角是誰？在哪裡？平常正在做什麼？</p>
+                        <textarea id="inputC1" rows="2" placeholder="主角是國二的阿傑，他平常最期待中午吃午餐的歡樂時刻，但每次午餐時間總是很匆忙..." class="w-full px-3 py-2 text-sm bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-sky-500"></textarea>
+                    </div>
+
+                    <!-- C2 -->
+                    <div class="border border-slate-200 rounded-2xl p-4 bg-slate-50/50 hover:bg-white transition space-y-2">
+                        <div class="flex items-center gap-2 text-amber-700 font-bold text-sm">
+                            <span class="bg-amber-500 text-white px-2.5 py-0.5 rounded-lg text-xs">C2</span>
+                            <span>咦？好像怪怪的（發現校園問題）</span>
+                        </div>
+                        <p class="text-xs text-slate-500">【提示】主角發現什麼校園現象？看見、聽見或感受到什麼？</p>
+                        <textarea id="inputC2" rows="2" placeholder="有一天他當午餐股長，赫然發現收回來的菜桶裡居然還剩下一大半的蔬菜與肉汁，垃圾桶周圍湯汁溢出..." class="w-full px-3 py-2 text-sm bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-sky-500"></textarea>
+                    </div>
+
+                    <!-- C3 -->
+                    <div class="border border-slate-200 rounded-2xl p-4 bg-slate-50/50 hover:bg-white transition space-y-2">
+                        <div class="flex items-center gap-2 text-rose-700 font-bold text-sm">
+                            <span class="bg-rose-500 text-white px-2.5 py-0.5 rounded-lg text-xs">C3</span>
+                            <span>原來有人受到影響（情緒與同理心）</span>
+                        </div>
+                        <p class="text-xs text-slate-500">【提示】這個問題影響了誰？他有什麼感受？</p>
+                        <textarea id="inputC3" rows="2" placeholder="他看到負責打扫廚餘區的小明同學滿頭大汗地清理刷洗，還發出嘆息：『為什麼大家都不珍惜呢？』阿傑心裡很震撼..." class="w-full px-3 py-2 text-sm bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-sky-500"></textarea>
+                    </div>
+
+                    <!-- C4 -->
+                    <div class="border border-slate-200 rounded-2xl p-4 bg-slate-50/50 hover:bg-white transition space-y-2">
+                        <div class="flex items-center gap-2 text-indigo-700 font-bold text-sm">
+                            <span class="bg-indigo-600 text-white px-2.5 py-0.5 rounded-lg text-xs">C4</span>
+                            <span>我們可以怎麼做？（調查、思考與 AI 協助）</span>
+                        </div>
+                        <p class="text-xs text-slate-500">【提示】主角調查、詢問、觀察或使用 AI，想到了什麼方法？</p>
+                        <textarea id="inputC4" rows="2" placeholder="阿傑開始做全校發問卷調查，並用 AI 一起腦力激盪，發現大家都因為菜量不均或不喜歡某些調味才剩下來..." class="w-full px-3 py-2 text-sm bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-sky-500"></textarea>
+                    </div>
+
+                    <!-- C5 -->
+                    <div class="border border-slate-200 rounded-2xl p-4 bg-slate-50/50 hover:bg-white transition space-y-2">
+                        <div class="flex items-center gap-2 text-emerald-700 font-bold text-sm">
+                            <span class="bg-emerald-600 text-white px-2.5 py-0.5 rounded-lg text-xs">C5</span>
+                            <span>讓改變發生（實踐創意提案）</span>
+                        </div>
+                        <p class="text-xs text-slate-500">【提示】學生真正提出一個可行又有創意的解決方案，並付諸行動。</p>
+                        <textarea id="inputC5" rows="2" placeholder="阿傑發起『飯量自由自主分區』與『校園減食獎勵活動』，並與午餐廚房溝通微調菜色量，大家開始熱情響應！" class="w-full px-3 py-2 text-sm bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-sky-500"></textarea>
+                    </div>
+
+                    <!-- C6 -->
+                    <div class="border border-slate-200 rounded-2xl p-4 bg-slate-50/50 hover:bg-white transition space-y-2">
+                        <div class="flex items-center gap-2 text-purple-700 font-bold text-sm">
+                            <span class="bg-purple-600 text-white px-2.5 py-0.5 rounded-lg text-xs">C6</span>
+                            <span>校園變得不一樣了（結尾與有力量的話）</span>
+                        </div>
+                        <p class="text-xs text-slate-500">【提示】事情最後如何改變？主角學到什麼？留下一句有力量的話。</p>
+                        <textarea id="inputC6" rows="2" placeholder="三週後，廚餘桶減量了七成，打掃同學露出燦爛微笑。阿傑明白：『每一個微小的關心，都能讓校園變得更美好。』" class="w-full px-3 py-2 text-sm bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-sky-500"></textarea>
+                    </div>
+                </div>
+
+                <div class="pt-4 flex justify-between items-center border-t border-slate-100">
+                    <button onclick="goToStep(5)" class="px-4 py-2 text-slate-500 hover:text-slate-800 text-sm font-medium">
+                        <i class="fa-solid fa-arrow-left text-xs mr-1"></i> 上一步
+                    </button>
+                    <button onclick="goToStep(7)" class="px-6 py-2.5 bg-amber-500 hover:bg-amber-600 text-white rounded-xl font-bold shadow-md transition flex items-center gap-2">
+                        <span>下一步：找 AI 故事教練</span>
+                        <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- STEP 7: AI 故事魔法師 (AI 故事教練) -->
+            <section id="step-content-7" class="step-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <span class="px-3 py-1 bg-amber-100 text-amber-900 font-semibold text-xs rounded-full inline-block mb-2">Step 7 / 7 Final</span>
+                    <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-2">
+                        🤖 AI 故事魔法師：✨ 請 AI 故事教練幫我整理
+                    </h2>
+                    <p class="text-slate-600 mt-1 text-sm">AI 教練不會代寫你的故事，而是協助你修順文筆、強化角色感情、並生成專業繪本分鏡與 AI 生圖提示詞！</p>
+                </div>
+
+                <!-- Student Information Header -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 mb-1">班級</label>
+                        <input type="text" id="studentClassName" placeholder="例如：801" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm bg-white">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 mb-1">座號</label>
+                        <input type="text" id="studentNumber" placeholder="例如：12" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm bg-white">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 mb-1">姓名</label>
+                        <input type="text" id="studentName" placeholder="例如：陳大明" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm bg-white">
+                    </div>
+                </div>
+
+                <!-- Trigger Button Section -->
+                <div class="bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 rounded-2xl p-6 text-white shadow-lg space-y-3 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div>
+                        <h3 class="text-lg font-bold flex items-center gap-2 justify-center sm:justify-start">
+                            <i class="fa-solid fa-sparkles"></i>
+                            <span>準備好讓 AI 故事教練進行魔法整理了嗎？</span>
+                        </h3>
+                        <p class="text-amber-100 text-xs mt-1">系統將根據你填寫的真實觀察與六幕架構，轉換成最完善的 3 分鐘 AI 繪本腳本。</p>
+                    </div>
+                    <button onclick="callGeminiCoach()" id="btnGenerateAI" class="px-6 py-3 bg-white text-amber-700 hover:bg-amber-50 rounded-xl font-extrabold shadow-md hover:shadow-lg transition flex items-center gap-2 flex-shrink-0 text-sm">
+                        <i class="fa-solid fa-wand-magic-sparkles text-amber-500"></i>
+                        <span>✨ 請 AI 故事教練幫我整理</span>
+                    </button>
+                </div>
+
+                <!-- AI Processing Loader -->
+                <div id="aiLoadingSpinner" class="hidden p-8 bg-slate-50 rounded-2xl border border-slate-200 text-center space-y-3">
+                    <div class="inline-block animate-spin text-amber-500 text-3xl">
+                        <i class="fa-solid fa-circle-notch"></i>
+                    </div>
+                    <p class="font-bold text-slate-700 text-sm">AI 故事教練正在用心閱讀你的觀察與故事...</p>
+                    <p class="text-xs text-slate-500">保留你的原汁原味想法・修順情感轉折・製作繪本分鏡提示詞中</p>
+                </div>
+
+                <!-- AI Generated Result Container -->
+                <div id="aiResultContainer" class="hidden space-y-6">
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                        <h3 class="font-bold text-slate-800 text-lg flex items-center gap-2">
+                            <i class="fa-solid fa-book-open text-sky-600"></i>
+                            <span>AI 故事教練整理完成之故事腳本</span>
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <!-- Step 7 登記系統快捷連結 -->
+                            <a href="https://script.google.com/macros/s/AKfycbzMCC6iJI_2Uc8nolNvM_fGncFKhS4TC1KLvkz-TYL02auA_gdwqC-i8wUB7kXi9nvS/exec" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg transition flex items-center gap-1 shadow-sm">
+                                <i class="fa-solid fa-file-pen"></i>
+                                <span>開啟 GAS 學生紀錄登記</span>
+                            </a>
+                            <button onclick="copyToClipboard(document.getElementById('aiResultOutput').innerText)" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg border border-slate-300 transition flex items-center gap-1">
+                                <i class="fa-regular fa-copy"></i>
+                                <span>複製全劇本</span>
+                            </button>
+                            <button onclick="window.print()" class="px-3 py-1.5 bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold rounded-lg transition flex items-center gap-1">
+                                <i class="fa-solid fa-print"></i>
+                                <span>列印 / 存為 PDF</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Output Render Box -->
+                    <div id="aiResultOutput" class="bg-slate-50 rounded-2xl p-5 border border-slate-200 text-slate-800 text-sm font-sans space-y-6 leading-relaxed whitespace-pre-line custom-scrollbar max-h-[700px] overflow-y-auto">
+                        <!-- Markdown/Text Output injected here -->
+                    </div>
+
+                    <!-- AI Image Prompt Generator Quick Tool -->
+                    <div class="bg-slate-900 text-white rounded-2xl p-5 space-y-3 no-print">
+                        <div class="flex items-center justify-between">
+                            <div class="font-bold text-sm flex items-center gap-2 text-amber-400">
+                                <i class="fa-solid fa-image"></i>
+                                <span>線上測試繪本插圖生成 (Gemini 3.1 Flash Image)</span>
+                            </div>
+                            <span class="text-[10px] text-slate-400">輸入單幕提示詞即可產生概念圖</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <input type="text" id="sampleImagePromptInput" placeholder="在此貼上【AI生圖提示詞】，例如：臺灣國中校園，中午桶餐廚餘區，14歲男學生看著廚餘桶..." class="flex-1 px-3 py-2 bg-slate-800 border border-slate-700 rounded-xl text-xs text-white focus:outline-none focus:border-amber-400">
+                            <button onclick="generateSampleImage()" id="btnGenerateImage" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs rounded-xl transition flex-shrink-0">
+                                產生繪本預覽圖
+                            </button>
+                        </div>
+                        <div id="imageGenLoading" class="hidden text-xs text-amber-300 animate-pulse">
+                            🎨 正在調配繪本色彩與繪製插圖中...
+                        </div>
+                        <div id="imageGenOutput" class="hidden pt-2 flex justify-center">
+                            <img id="sampleGeneratedImg" src="" alt="AI Generated Illustration" class="max-h-80 rounded-xl border border-slate-700 shadow-md">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Sheet Final Submit -->
+                <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-5 no-print">
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div>
+                            <h3 class="font-bold text-emerald-900 flex items-center gap-2">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                                <span>正式繳交作品</span>
+                            </h3>
+                            <p class="text-xs text-emerald-700 mt-1">
+                                平時輸入會自動儲存在本機；完成後請按右側按鈕，將完整作品送到老師的 Google 試算表。
+                            </p>
+                            <p id="sheetSubmitStatus" class="text-xs text-slate-500 mt-2">尚未正式繳交</p>
+                        </div>
+                        <button id="btnSubmitSheet" onclick="submitToGoogleSheet()"
+                            class="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-400 disabled:cursor-not-allowed text-white rounded-xl font-bold shadow-md transition flex items-center gap-2 flex-shrink-0">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <span>儲存作品到老師系統</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Prompt Code Accordion (Optional details) -->
+                <div class="border border-slate-200 rounded-2xl p-4 bg-slate-50/60 space-y-2 no-print">
+                    <button onclick="togglePromptPreview()" class="w-full flex justify-between items-center text-xs font-bold text-slate-600 hover:text-slate-900">
+                        <span class="flex items-center gap-1.5">
+                            <i class="fa-solid fa-code text-slate-400"></i>
+                            <span>檢視傳送給 Gemini 的完整 Prompt 內容</span>
+                        </span>
+                        <i id="promptChevron" class="fa-solid fa-chevron-down text-slate-400"></i>
+                    </button>
+                    <div id="promptPreviewBox" class="hidden pt-2">
+                        <textarea id="promptPreviewText" readonly rows="8" class="w-full p-3 bg-slate-900 text-emerald-400 font-mono text-xs rounded-xl border border-slate-800"></textarea>
+                    </div>
+                </div>
+
+                <div class="pt-4 flex justify-between items-center border-t border-slate-100">
+                    <button onclick="goToStep(6)" class="px-4 py-2 text-slate-500 hover:text-slate-800 text-sm font-medium">
+                        <i class="fa-solid fa-arrow-left text-xs mr-1"></i> 上一步
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Notification Toast Modal -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-xl border border-slate-700 text-sm flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300 z-50">
+        <i id="toastIcon" class="fa-solid fa-circle-check text-emerald-400"></i>
+        <span id="toastMessage">提示訊息</span>
+    </div>
+
+    <script>
+        // -------------------------------------------------------------
+        // Data Store & State
+        // -------------------------------------------------------------
+        let currentStep = 1;
+
+        // 20 Campus Observation Topics Data
+        const campusTopics = [
+            { id: 1, title: '🍱 桶餐剩食', desc: '午餐廚餘浪費與盛飯分量問題' },
+            { id: 2, title: '🌡️ 炎熱教室', desc: '教室西曬與冷氣耗能舒適度' },
+            { id: 3, title: '🌳 校園樹蔭', desc: '校園綠意遮陽與老樹維護' },
+            { id: 4, title: '💧 水資源', desc: '洗手台漏水與省水設施宣導' },
+            { id: 5, title: '💡 教室忘記關燈', desc: '放學後或分組教室隨手關燈' },
+            { id: 6, title: '♻️ 垃圾分類', desc: '回收桶分類不純與清理辛苦' },
+            { id: 7, title: '🔥 校園防火', desc: '逃生通道堆積雜物與演練' },
+            { id: 8, title: '🌏 地震避難', desc: '避難掩護動作與動線流暢度' },
+            { id: 9, title: '♿ 無障礙校園', desc: '輪椅斜坡、電梯與特殊生體驗' },
+            { id: 10, title: '❤️ 孤單的同學', desc: '下課下棋分組下獨自一人的陪伴' },
+            { id: 11, title: '🤝 友善校園', desc: '言語玩笑界線與同學互相包容' },
+            { id: 12, title: '📱 手機使用', desc: '下課滑手機與面對面互動溝通' },
+            { id: 13, title: '🤖 AI與學習', desc: '善用AI查資料而不是抄襲作弊' },
+            { id: 14, title: '🔊 噪音問題', desc: '自習課走廊吵鬧與專注環境' },
+            { id: 15, title: '🐦 校園生態', desc: '校園鳥類棲息與流浪動物相處' },
+            { id: 16, title: '🌧️ 豪雨積水', desc: '大雨走廊積水滑倒安全風險' },
+            { id: 17, title: '🏫 綠建築', desc: '雨水回收與校園太陽能發電' },
+            { id: 18, title: '🚰 飲水設備', desc: '飲水機排隊與濾心清潔維持' },
+            { id: 19, title: '🚻 廁所環境', desc: '廁所通風異味與清潔維護' },
+            { id: 20, title: '🚲 通學安全', desc: '校門口家長接送擁擠與騎車安全' }
+        ];
+
+        // System Prompt definition for Gemini
+        const geminiSystemPrompt = `你是一位專門協助臺灣國中學生參加「AI繪本－校園觀察家」競賽的故事創作教練。
+
+任務目標：
+學生必須從真實校園生活出發，觀察校園中的問題，運用AI協助思考，提出具有創意、人文關懷且可實踐的構想，最後製作成3分鐘以內的AI繪本影片。
+
+重要原則：
+1. 保留學生原本的想法，不要把作品完全改寫成成人語氣。
+2. 使用適合國中學生的繁體中文。
+3. 故事必須從「真實校園觀察」出發。
+4. 不要只喊SDGs、環保、防災等口號。
+5. 必須出現具體人物、事件、衝突、感受與改變。
+6. 強調同理心與人文關懷。
+7. 解決方法應具有創意，但仍能在校園中實踐。
+8. AI只能協助學生整理、延伸與改善想法，不可以取代學生的觀察與思考。
+9. 不要加入學生沒有提供的真實人物姓名或個人資料。
+10. 故事總長應適合製作成3分鐘內的繪本影片。
+
+故事結構：
+C1 平常的校園：建立人物、時間、地點與日常情境。
+C2 發現問題：主角從校園生活中發現一個值得注意的現象。
+C3 看見影響：呈現問題對學生、老師、環境或其他人的影響，讓故事產生情感與人文關懷。
+C4 尋找方法：主角開始觀察、訪談、查資料、蒐集數據，並適度利用AI協助思考。
+C5 行動與改變：提出一個具有創意、可行性的校園改善方案，並讓角色實際採取行動。
+C6 故事結尾：呈現改變與反思。最後以一句簡短、有力量、有餘韻的句子結束，避免制式宣導口號。
+
+請依照學生輸入的內容，協助整理成完整六幕故事。
+
+每一幕請輸出：
+【幕次】
+【旁白】
+【角色對話】
+【畫面描述】
+【AI生圖提示詞】
+
+AI生圖提示詞需描述：
+人物、場景、動作、表情、構圖、光線與氣氛，保持主要角色外觀一致。
+
+最後再輸出：
+【故事名稱】
+【故事核心議題】
+【想傳達的理念】
+【創意解決方案】
+【SDGs關聯】
+【3分鐘影片結尾金句】`;
+
+        // -------------------------------------------------------------
+        // Initialize App & Event Listeners
+        // -------------------------------------------------------------
+        window.onload = function() {
+            renderTopicCards();
+            updateStepUI();
+        };
+
+        function renderTopicCards() {
+            const container = document.getElementById('topicCardsContainer');
+            if (!container) return;
+
+            container.innerHTML = campusTopics.map(t => `
+                <button onclick="selectTopic('${t.title}')" class="topic-card bg-slate-50 hover:bg-sky-50 border border-slate-200 hover:border-sky-300 rounded-xl p-3 text-left transition flex flex-col justify-between group h-full">
+                    <div>
+                        <div class="font-bold text-slate-800 text-sm group-hover:text-sky-700 mb-1">${t.title}</div>
+                        <div class="text-[11px] text-slate-500 leading-snug">${t.desc}</div>
+                    </div>
+                    <div class="mt-2 flex items-center justify-between text-[10px] text-sky-600 opacity-0 group-hover:opacity-100 transition">
+                        <span>選擇主題</span>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                </button>
+            `).join('');
+        }
+
+        function selectTopic(topicTitle) {
+            document.getElementById('inputTopic').value = topicTitle;
+            document.getElementById('currentTopicText').innerText = topicTitle;
+            showToast(`已選擇主題：${topicTitle}`);
+            saveData();
+        }
+
+        // -------------------------------------------------------------
+        // Step Navigation Logic
+        // -------------------------------------------------------------
+        function goToStep(stepNum) {
+            currentStep = stepNum;
+            updateStepUI();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateStepUI() {
+            // Hide all panels
+            for (let i = 1; i <= 7; i++) {
+                const panel = document.getElementById(`step-content-${i}`);
+                if (panel) panel.classList.add('hidden');
+
+                const navBtn = document.getElementById(`nav-step-${i}`);
+                if (navBtn) {
+                    navBtn.className = "step-nav-btn w-full text-left px-3 py-2.5 rounded-xl flex items-center gap-3 font-medium text-sm transition hover:bg-slate-100 text-slate-600";
+                }
+            }
+
+            // Show active panel
+            const activePanel = document.getElementById(`step-content-${currentStep}`);
+            if (activePanel) activePanel.classList.remove('hidden');
+
+            // Style active nav button
+            const activeNavBtn = document.getElementById(`nav-step-${currentStep}`);
+            if (activeNavBtn) {
+                activeNavBtn.className = "step-nav-btn w-full text-left px-3 py-2.5 rounded-xl flex items-center gap-3 font-medium text-sm transition bg-sky-50 text-sky-700 border border-sky-200 shadow-sm font-bold";
+            }
+
+            // Update Progress Bar
+            const percent = (currentStep / 7) * 100;
+            document.getElementById('globalProgressBar').style.width = `${percent}%`;
+            document.getElementById('completedStepsCount').innerText = `${currentStep}/7 完成`;
+
+            // Auto-update topic text display in step 2
+            const currentTopicVal = document.getElementById('inputTopic').value;
+            if (currentTopicVal) {
+                document.getElementById('currentTopicText').innerText = currentTopicVal;
+            }
+
+            // Sync prompt preview if in Step 7
+            if (currentStep === 7) {
+                updatePromptPreviewText();
+            }
+        }
+
+        // Quiz check in step 1
+        function checkDetectiveQuiz(isCorrect) {
+            const feedback = document.getElementById('quizFeedback');
+            feedback.classList.remove('hidden', 'bg-red-50', 'text-red-800', 'bg-emerald-50', 'text-emerald-800');
+            
+            if (isCorrect) {
+                feedback.classList.add('bg-emerald-50', 'text-emerald-800');
+                feedback.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i> <strong>太棒了！答對了！</strong> 選項 B 有明確的時間、地點、人物具體動作與真實感覺，這才是好故事的靈魂細節！`;
+            } else {
+                feedback.classList.add('bg-red-50', 'text-red-800');
+                feedback.innerHTML = `<i class="fa-solid fa-circle-xmark text-red-600 mr-1"></i> <strong>再試一次！</strong> 選項 A 只是憑空想像的主觀印象，並沒有走到校園中真實看見細節喔。`;
+            }
+        }
+
+        function autoFillActsFromSteps() {
+            const topic = document.getElementById('inputTopic').value || '校園議題';
+            const observation = document.getElementById('inputObservation').value || '我在校園看到的現象';
+            const problem = document.getElementById('inputProblem').value || '問題影響';
+            const people = document.getElementById('inputPeople').value || '受影響的對象';
+            const feeling = document.getElementById('inputFeeling').value || '他們的心情';
+            const solution = document.getElementById('inputSolution').value || '改善方法';
+            const message = document.getElementById('inputMessage').value || '傳達的理念';
+
+            if (!document.getElementById('inputC1').value) {
+                document.getElementById('inputC1').value = `在一個平凡的校園早晨，主角正經歷著日常的校園生活，討論著有關【${topic}】的故事背景。`;
+            }
+            if (!document.getElementById('inputC2').value) {
+                document.getElementById('inputC2').value = `有一天，主角停下腳步仔細觀察，赫然注意到：${observation}。`;
+            }
+            if (!document.getElementById('inputC3').value) {
+                document.getElementById('inputC3').value = `主角發現這樣的情況讓【${people}】深受影響，他們的感受是：${feeling}。因為${problem}。`;
+            }
+            if (!document.getElementById('inputC4').value) {
+                document.getElementById('inputC4').value = `主角決定不再忽視，開始調查訪談，並利用 AI 協助腦力激盪，想到了解決點子。`;
+            }
+            if (!document.getElementById('inputC5').value) {
+                document.getElementById('inputC5').value = `主角開始推動實踐方案：${solution}，邀請全校師生一起行動。`;
+            }
+            if (!document.getElementById('inputC6').value) {
+                document.getElementById('inputC6').value = `校園產生了顯著改變！主角體會到：${message}。`;
+            }
+
+            showToast('已將步驟 3～5 的觀察自動轉換帶入 C1～C6！');
+            saveData();
+        }
+
+        // -------------------------------------------------------------
+        // Prompt Builder Function (Required by Specification)
+        // -------------------------------------------------------------
+        function buildGeminiPrompt(data) {
+            return `我是國中生，正在參加「AI繪本－校園觀察家」創作。
+
+【我的基本資料】
+班級：${data.className || '未填寫'}
+座號：${data.number || '未填寫'}
+姓名：${data.name || '未填寫'}
+
+【我的故事主題】${data.topic || '未填寫'}
+
+【我在校園真正觀察到的現象】${data.observation || '未填寫'}
+
+【我覺得這是一個問題，因為】${data.problem || '未填寫'}
+
+【受到影響的人】${data.people || '未填寫'}
+
+【他們可能有什麼感受】${data.feeling || '未填寫'}
+
+【我想到的改善方法】${data.solution || '未填寫'}
+
+【我希望故事告訴大家】${data.message || '未填寫'}
+
+以下是我自己設計的六幕故事：
+
+C1｜平常的校園
+${data.c1 || '未填寫'}
+
+C2｜發現問題
+${data.c2 || '未填寫'}
+
+C3｜看見影響
+${data.c3 || '未填寫'}
+
+C4｜尋找方法
+${data.c4 || '未填寫'}
+
+C5｜行動與改變
+${data.c5 || '未填寫'}
+
+C6｜故事結尾
+${data.c6 || '未填寫'}
+
+請保留我的主要想法，
+不要重新創作一個與我原本構想不同的故事。
+
+請協助：
+1. 修順故事
+2. 加強人物情感
+3. 加強故事轉折
+4. 檢查解決方案是否合理
+5. 整理成適合3分鐘AI繪本影片的六幕腳本
+6. 每幕產生AI生圖提示詞
+7. 最後提供一個有餘韻的結尾金句。`;
+        }
+
+        function getFormData() {
+            return {
+                className: document.getElementById('studentClassName').value,
+                number: document.getElementById('studentNumber').value,
+                name: document.getElementById('studentName').value,
+                topic: document.getElementById('inputTopic').value,
+                observation: document.getElementById('inputObservation').value,
+                problem: document.getElementById('inputProblem').value,
+                people: document.getElementById('inputPeople').value,
+                feeling: document.getElementById('inputFeeling').value,
+                solution: document.getElementById('inputSolution').value,
+                message: document.getElementById('inputMessage').value,
+                c1: document.getElementById('inputC1').value,
+                c2: document.getElementById('inputC2').value,
+                c3: document.getElementById('inputC3').value,
+                c4: document.getElementById('inputC4').value,
+                c5: document.getElementById('inputC5').value,
+                c6: document.getElementById('inputC6').value
+            };
+        }
+
+        function updatePromptPreviewText() {
+            const data = getFormData();
+            const fullPrompt = buildGeminiPrompt(data);
+            const previewEl = document.getElementById('promptPreviewText');
+            if (previewEl) previewEl.value = fullPrompt;
+        }
+
+        function togglePromptPreview() {
+            const box = document.getElementById('promptPreviewBox');
+            const chevron = document.getElementById('promptChevron');
+            if (box.classList.contains('hidden')) {
+                box.classList.remove('hidden');
+                chevron.classList.replace('fa-chevron-down', 'fa-chevron-up');
+            } else {
+                box.classList.add('hidden');
+                chevron.classList.replace('fa-chevron-up', 'fa-chevron-down');
+            }
+        }
+
+        async function callGeminiCoach() {
+            const data = getFormData();
+            if (!data.observation.trim()) {
+                showToast('請先填寫 Step 3 的「📸 我真的看到什麼？」欄位喔！', true);
+                goToStep(3);
+                return;
+            }
+
+            const userPrompt = buildGeminiPrompt(data);
+            const loader = document.getElementById('aiLoadingSpinner');
+            const resultBox = document.getElementById('aiResultContainer');
+            const btn = document.getElementById('btnGenerateAI');
+
+            loader.classList.remove('hidden');
+            resultBox.classList.add('hidden');
+            btn.disabled = true;
+
+            try {
+                const response = await fetch(GAS_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify({
+                        action: 'gemini',
+                        prompt: userPrompt,
+                        systemPrompt: geminiSystemPrompt
+                    }),
+                    redirect: 'follow'
+                });
+
+                if (!response.ok) {
+                    throw new Error(`GAS HTTP Error: ${response.status}`);
+                }
+
+                const raw = await response.text();
+                let result;
+                try {
+                    result = JSON.parse(raw);
+                } catch (_) {
+                    console.error('GAS 原始回應：', raw);
+                    throw new Error('GAS 回傳格式錯誤，請確認已重新部署最新版');
+                }
+
+                if (result.status !== 'success') {
+                    throw new Error(result.message || 'Gemini 產生失敗');
+                }
+
+                if (!result.text) {
+                    throw new Error('Gemini 沒有回傳文字內容');
+                }
+
+                document.getElementById('aiResultOutput').innerHTML =
+                    formatMarkdownToHTML(result.text);
+                resultBox.classList.remove('hidden');
+                showToast('✨ AI 故事教練已整理完成！');
+
+            } catch (err) {
+                console.error(err);
+                showToast(`整理失敗：${err.message || '請稍後再試'}`, true);
+            } finally {
+                loader.classList.add('hidden');
+                btn.disabled = false;
+            }
+        }
+
+        // Simple Markdown formatter for clean display
+        function formatMarkdownToHTML(text) {
+            return text
+                .replace(/^### (.*$)/gim, '<h3 class="text-base font-bold text-sky-800 mt-4 mb-2">$1</h3>')
+                .replace(/^## (.*$)/gim, '<h2 class="text-lg font-bold text-slate-900 border-b border-slate-200 pb-1 mt-6 mb-3">$1</h2>')
+                .replace(/^# (.*$)/gim, '<h1 class="text-xl font-bold text-amber-800 mt-6 mb-3">$1</h1>')
+                .replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-amber-700">$1</strong>')
+                .replace(/【(.*?)】/g, '<span class="inline-block bg-sky-100 text-sky-800 font-bold px-2 py-0.5 rounded text-xs my-0.5">【$1】</span>');
+        }
+
+        async function generateSampleImage() {
+            const promptInput = document.getElementById('sampleImagePromptInput');
+            const promptText = promptInput.value.trim();
+            if (!promptText) {
+                showToast('請先貼上或輸入 AI 生圖提示詞', true);
+                return;
+            }
+
+            const loader = document.getElementById('imageGenLoading');
+            const outputContainer = document.getElementById('imageGenOutput');
+            const imgEl = document.getElementById('sampleGeneratedImg');
+            const btn = document.getElementById('btnGenerateImage');
+
+            loader.classList.remove('hidden');
+            outputContainer.classList.add('hidden');
+            btn.disabled = true;
+
+            try {
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image:generateContent?key=${apiKey}`;
+
+                const payload = {
+                    contents: [{
+                        parts: [{ text: `Digital picture book illustration style for junior high school story: ${promptText}` }]
+                    }],
+                    generationConfig: {
+                        responseModalities: ['IMAGE'],
+                        imageConfig: { aspectRatio: "16:9" }
+                    }
+                };
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                const part = result?.candidates?.[0]?.content?.parts?.find(p => p.inlineData);
+
+                if (part && part.inlineData) {
+                    imgEl.src = `data:${part.inlineData.mimeType};base64,${part.inlineData.data}`;
+                    outputContainer.classList.remove('hidden');
+                    showToast('繪本預覽圖生成成功！');
+                } else {
+                    throw new Error('無法取得生成圖片數據');
+                }
+
+            } catch (err) {
+                console.error(err);
+                showToast(`圖片生成失敗: ${err.message}`, true);
+            } finally {
+                loader.classList.add('hidden');
+                btn.disabled = false;
+            }
+        }
+
+        // -------------------------------------------------------------
+        // Storage & Utilities
+        // -------------------------------------------------------------
+        const GAS_URL = "https://script.google.com/macros/s/AKfycbzMCC6iJI_2Uc8nolNvM_fGncFKhS4TC1KLvkz-TYL02auA_gdwqC-i8wUB7kXi9nvS/exec";
+
+        async function submitToGoogleSheet() {
+            const data = getFormData();
+
+            if (!data.className.trim()) {
+                showToast('請先填寫班級', true);
+                document.getElementById('studentClassName').focus();
+                return;
+            }
+            if (!data.number.trim()) {
+                showToast('請先填寫座號', true);
+                document.getElementById('studentNumber').focus();
+                return;
+            }
+            if (!data.name.trim()) {
+                showToast('請先填寫姓名', true);
+                document.getElementById('studentName').focus();
+                return;
+            }
+            if (!data.topic.trim()) {
+                showToast('請先選擇或填寫故事主題', true);
+                goToStep(3);
+                return;
+            }
+            if (!data.observation.trim()) {
+                showToast('請先完成「我真的看到什麼？」校園觀察', true);
+                goToStep(3);
+                return;
+            }
+
+            const aiOutput = document.getElementById('aiResultOutput');
+            data.aiResult = aiOutput ? aiOutput.innerText.trim() : '';
+
+            const btn = document.getElementById('btnSubmitSheet');
+            const status = document.getElementById('sheetSubmitStatus');
+            const originalHTML = btn ? btn.innerHTML : '';
+
+            try {
+                if (btn) {
+                    btn.disabled = true;
+                    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i><span>儲存中...</span>';
+                }
+                if (status) {
+                    status.className = 'text-xs text-amber-700 mt-2';
+                    status.textContent = '正在連線 Google 試算表...';
+                }
+
+                // 使用 text/plain 傳 JSON，可避免 GitHub Pages → GAS 的 OPTIONS preflight 問題
+                const response = await fetch(GAS_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'text/plain;charset=utf-8'
+                    },
+                    body: JSON.stringify(data),
+                    redirect: 'follow'
+                });
+
+                if (!response.ok) {
+                    throw new Error(`伺服器回應 ${response.status}`);
+                }
+
+                const rawText = await response.text();
+                let result;
+                try {
+                    result = JSON.parse(rawText);
+                } catch (parseError) {
+                    console.error('GAS 原始回應：', rawText);
+                    throw new Error('GAS 回傳內容不是有效 JSON，請確認 Web App 已重新部署');
+                }
+
+                if (result.status !== 'success') {
+                    throw new Error(result.message || 'Google 試算表寫入失敗');
+                }
+
+                saveData();
+
+                const submittedAt = result.time || new Date().toLocaleString('zh-TW');
+                if (status) {
+                    status.className = 'text-xs text-emerald-700 font-bold mt-2';
+                    status.textContent = `✓ 已正式繳交：${submittedAt}`;
+                }
+                showToast('🎉 作品已成功儲存到老師的 Google 試算表！');
+
+            } catch (error) {
+                console.error('Google Sheet 儲存錯誤：', error);
+                if (status) {
+                    status.className = 'text-xs text-red-600 font-bold mt-2';
+                    status.textContent = '儲存失敗：' + error.message;
+                }
+                showToast('❌ 儲存失敗：' + error.message, true);
+            } finally {
+                if (btn) {
+                    btn.disabled = false;
+                    btn.innerHTML = originalHTML;
+                }
+            }
+        }
+
+        function saveData() {
+            const data = getFormData();
+            localStorage.setItem('campus_observer_draft', JSON.stringify(data));
+            const status = document.getElementById('saveStatusText');
+            if (status) {
+                status.innerText = `已於 ${new Date().toLocaleTimeString()} 儲存`;
+            }
+        }
+
+        function loadSavedData() {
+            const saved = localStorage.getItem('campus_observer_draft');
+            if (!saved) return;
+
+            try {
+                const data = JSON.parse(saved);
+                document.getElementById('studentClassName').value = data.className || '';
+                document.getElementById('studentNumber').value = data.number || '';
+                document.getElementById('studentName').value = data.name || '';
+                document.getElementById('inputTopic').value = data.topic || '';
+                document.getElementById('inputObservation').value = data.observation || '';
+                document.getElementById('inputProblem').value = data.problem || '';
+                document.getElementById('inputPeople').value = data.people || '';
+                document.getElementById('inputFeeling').value = data.feeling || '';
+                document.getElementById('inputSolution').value = data.solution || '';
+                document.getElementById('inputMessage').value = data.message || '';
+                document.getElementById('inputC1').value = data.c1 || '';
+                document.getElementById('inputC2').value = data.c2 || '';
+                document.getElementById('inputC3').value = data.c3 || '';
+                document.getElementById('inputC4').value = data.c4 || '';
+                document.getElementById('inputC5').value = data.c5 || '';
+                document.getElementById('inputC6').value = data.c6 || '';
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        function setupAutoSave() {
+            const inputs = document.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('input', () => {
+                    saveData();
+                    if (currentStep === 7) updatePromptPreviewText();
+                });
+            });
+        }
+
+        function resetData() {
+            if (window.confirm ? true : true) { // Avoid native confirm popup UI mismatch
+                localStorage.removeItem('campus_observer_draft');
+                location.reload();
+            }
+        }
+
+        function copyToClipboard(text) {
+            if (!text) return;
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            showToast('已成功複製到剪貼簿！');
+        }
+
+        function showToast(message, isError = false) {
+            const toast = document.getElementById('toast');
+            const icon = document.getElementById('toastIcon');
+            const msg = document.getElementById('toastMessage');
+
+            msg.innerText = message;
+            if (isError) {
+                icon.className = "fa-solid fa-circle-exclamation text-rose-400";
+            } else {
+                icon.className = "fa-solid fa-circle-check text-emerald-400";
+            }
+
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
