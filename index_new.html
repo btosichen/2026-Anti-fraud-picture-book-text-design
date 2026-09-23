@@ -885,7 +885,7 @@ AI 生圖提示詞要描述人物、場景、動作、表情、構圖、光線�
             }
         }
 
-        function copyFullPrompt() {
+        async function copyFullPrompt() {
             const data = getFormData();
             if (!data.observation.trim()) {
                 showToast('請先完成 Step 3 的校園觀察紀錄', true);
@@ -894,7 +894,7 @@ AI 生圖提示詞要描述人物、場景、動作、表情、構圖、光線�
             }
 
             updatePromptPreviewText();
-            copyToClipboard(buildGeminiPrompt(data));
+            await copyToClipboard(buildGeminiPrompt(data));
         }
 
         function buildStudentRecord(data) {
@@ -1015,15 +1015,45 @@ AI 生圖提示詞要描述人物、場景、動作、表情、構圖、光線�
             }
         }
 
-        function copyToClipboard(text) {
-            if (!text) return;
-            const textarea = document.createElement('textarea');
-            textarea.value = text;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-            showToast('已成功複製到剪貼簿！');
+        async function copyToClipboard(text) {
+            if (!text) {
+                showToast('沒有可複製的內容', true);
+                return false;
+            }
+
+            try {
+                if (navigator.clipboard && window.isSecureContext) {
+                    try {
+                        await navigator.clipboard.writeText(text);
+                        showToast('已成功複製到剪貼簿！');
+                        return true;
+                    } catch (clipboardError) {
+                        console.warn('Clipboard API 無法使用，改用相容模式：', clipboardError);
+                    }
+                }
+
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                textarea.setAttribute('readonly', '');
+                textarea.style.position = 'fixed';
+                textarea.style.left = '-9999px';
+                textarea.style.top = '0';
+                document.body.appendChild(textarea);
+                textarea.focus();
+                textarea.select();
+                textarea.setSelectionRange(0, textarea.value.length);
+
+                const copied = document.execCommand('copy');
+                document.body.removeChild(textarea);
+                if (!copied) throw new Error('瀏覽器拒絕剪貼簿存取');
+
+                showToast('已成功複製到剪貼簿！');
+                return true;
+            } catch (error) {
+                console.error('複製到剪貼簿失敗：', error);
+                showToast('複製失敗，請展開下方 Prompt 後手動全選複製', true);
+                return false;
+            }
         }
 
         function showToast(message, isError = false) {
