@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔎 AI 校園觀察家｜我的校園，我來說故事</title>
+    <title>🌏 AI 社會觀察家｜高中職外籍生雙語學習鷹架</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -57,17 +57,17 @@
                 </div>
                 <div>
                     <h1 class="text-lg sm:text-xl font-bold tracking-tight flex items-center gap-2">
-                        AI 校園觀察家
-                        <span class="text-xs bg-amber-400 text-slate-900 px-2 py-0.5 rounded-full font-extrabold uppercase">學習鷹架 App</span>
+                        AI 社會觀察家 · Social Observer
+                        <span class="text-xs bg-amber-400 text-slate-900 px-2 py-0.5 rounded-full font-extrabold uppercase">高中職雙語版</span>
                     </h1>
-                    <p class="text-xs text-sky-100 hidden sm:block">我的校園，我來說故事・觀察 ➔ 發現 ➔ 思考 ➔ 提案 ➔ 故事 ➔ 自主整理</p>
+                    <p class="text-xs text-sky-100 hidden sm:block">觀察 Observe ➔ 探究 Investigate ➔ 思辨 Think ➔ 創新 Propose ➔ 故事 Story</p>
                 </div>
             </div>
 
             <div class="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm">
-                <a href="index_highschool_bilingual.html" class="px-3 py-1.5 bg-amber-400/20 hover:bg-amber-400/30 text-amber-100 border border-amber-300/30 rounded-lg transition flex items-center gap-1.5 font-medium">
-                    <i class="fa-solid fa-language text-xs"></i>
-                    <span>高中職外籍生雙語版</span>
+                <a href="index_new.html" class="px-3 py-1.5 bg-white/10 hover:bg-white/20 text-sky-100 border border-white/20 rounded-lg transition flex items-center gap-1.5 font-medium">
+                    <i class="fa-solid fa-arrow-left text-xs"></i>
+                    <span>國中校園版</span>
                 </a>
                 <div class="hidden md:flex items-center gap-2 bg-black/20 px-3 py-1.5 rounded-lg border border-white/10">
                     <i class="fa-regular fa-floppy-disk text-emerald-400"></i>
@@ -76,11 +76,11 @@
                 <!-- 整合 GAS 學生紀錄系統連結 -->
                 <a href="https://script.google.com/macros/s/AKfycbzMCC6iJI_2Uc8nolNvM_fGncFKhS4TC1KLvkz-TYL02auA_gdwqC-i8wUB7kXi9nvS/exec" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-200 border border-emerald-400/30 rounded-lg transition flex items-center gap-1.5 font-medium">
                     <i class="fa-solid fa-clipboard-list text-xs"></i>
-                    <span>學生紀錄系統</span>
+                    <span>我的紀錄 My Records</span>
                 </a>
                 <button onclick="resetData()" class="px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded-lg border border-white/20 transition flex items-center gap-1.5">
                     <i class="fa-solid fa-rotate-left text-xs"></i>
-                    <span>重新填寫</span>
+                    <span>重新填寫 Reset</span>
                 </button>
             </div>
         </div>
@@ -98,8 +98,8 @@
         <aside class="w-full md:w-64 flex-shrink-0 no-print">
             <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-3 sm:p-4 sticky top-20">
                 <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 px-2 mb-3 flex items-center justify-between">
-                    <span>探索流程 7 Steps</span>
-                    <span id="completedStepsCount" class="text-sky-600 bg-sky-50 px-2 py-0.5 rounded-full text-xs">1/7 完成</span>
+                    <span>探究流程 · 7 Steps</span>
+                    <span id="completedStepsCount" class="text-sky-600 bg-sky-50 px-2 py-0.5 rounded-full text-xs">1/7</span>
                 </h2>
 
                 <nav class="space-y-1" id="stepNavButtons">
@@ -107,56 +107,56 @@
                     <button onclick="goToStep(1)" id="nav-step-1" class="step-nav-btn w-full text-left px-3 py-2.5 rounded-xl flex items-center gap-3 font-medium text-sm transition bg-sky-50 text-sky-700 border border-sky-200 shadow-sm">
                         <span class="w-7 h-7 rounded-lg bg-sky-600 text-white flex items-center justify-center font-bold text-xs flex-shrink-0">1</span>
                         <div class="truncate">
-                            <div class="truncate font-semibold">🔎 校園偵探出動</div>
-                            <div class="text-[10px] text-slate-500 truncate">認識校園觀察法</div>
+                            <div class="truncate font-semibold">🔎 成為社會觀察家</div>
+                            <div class="text-[10px] text-slate-500 truncate">Become a Social Observer</div>
                         </div>
                     </button>
 
                     <button onclick="goToStep(2)" id="nav-step-2" class="step-nav-btn w-full text-left px-3 py-2.5 rounded-xl flex items-center gap-3 font-medium text-sm transition hover:bg-slate-100 text-slate-600">
                         <span class="w-7 h-7 rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-xs flex-shrink-0">2</span>
                         <div class="truncate">
-                            <div class="truncate font-semibold">💡 尋找故事靈感</div>
-                            <div class="text-[10px] text-slate-500 truncate">20 個校園觀察議題</div>
+                            <div class="truncate font-semibold">💡 選擇社會議題</div>
+                            <div class="text-[10px] text-slate-500 truncate">Choose a Social Issue</div>
                         </div>
                     </button>
 
                     <button onclick="goToStep(3)" id="nav-step-3" class="step-nav-btn w-full text-left px-3 py-2.5 rounded-xl flex items-center gap-3 font-medium text-sm transition hover:bg-slate-100 text-slate-600">
                         <span class="w-7 h-7 rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-xs flex-shrink-0">3</span>
                         <div class="truncate">
-                            <div class="truncate font-semibold">👀 我發現了什麼？</div>
-                            <div class="text-[10px] text-slate-500 truncate">真實觀察與問題定義</div>
+                            <div class="truncate font-semibold">👀 觀察與查證</div>
+                            <div class="text-[10px] text-slate-500 truncate">Observe &amp; Verify</div>
                         </div>
                     </button>
 
                     <button onclick="goToStep(4)" id="nav-step-4" class="step-nav-btn w-full text-left px-3 py-2.5 rounded-xl flex items-center gap-3 font-medium text-sm transition hover:bg-slate-100 text-slate-600">
                         <span class="w-7 h-7 rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-xs flex-shrink-0">4</span>
                         <div class="truncate">
-                            <div class="truncate font-semibold">❤️ 誰受到影響？</div>
-                            <div class="text-[10px] text-slate-500 truncate">人文關懷與主角設定</div>
+                            <div class="truncate font-semibold">❤️ 權益與多元觀點</div>
+                            <div class="text-[10px] text-slate-500 truncate">People &amp; Perspectives</div>
                         </div>
                     </button>
 
                     <button onclick="goToStep(5)" id="nav-step-5" class="step-nav-btn w-full text-left px-3 py-2.5 rounded-xl flex items-center gap-3 font-medium text-sm transition hover:bg-slate-100 text-slate-600">
                         <span class="w-7 h-7 rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-xs flex-shrink-0">5</span>
                         <div class="truncate">
-                            <div class="truncate font-semibold">🧠 如果可以改變？</div>
-                            <div class="text-[10px] text-slate-500 truncate">創意可行解決方案</div>
+                            <div class="truncate font-semibold">🧠 跨域創新提案</div>
+                            <div class="text-[10px] text-slate-500 truncate">Innovative Proposal</div>
                         </div>
                     </button>
 
                     <button onclick="goToStep(6)" id="nav-step-6" class="step-nav-btn w-full text-left px-3 py-2.5 rounded-xl flex items-center gap-3 font-medium text-sm transition hover:bg-slate-100 text-slate-600">
                         <span class="w-7 h-7 rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-xs flex-shrink-0">6</span>
                         <div class="truncate">
-                            <div class="truncate font-semibold">📖 六幕故事工作坊</div>
-                            <div class="text-[10px] text-slate-500 truncate">填寫 C1～C6 故事骨架</div>
+                            <div class="truncate font-semibold">📖 六幕繪本工作坊</div>
+                            <div class="text-[10px] text-slate-500 truncate">Six-scene Storyboard</div>
                         </div>
                     </button>
 
                     <button onclick="goToStep(7)" id="nav-step-7" class="step-nav-btn w-full text-left px-3 py-2.5 rounded-xl flex items-center gap-3 font-medium text-sm transition hover:bg-slate-100 text-slate-600">
                         <span class="w-7 h-7 rounded-lg bg-amber-500 text-white flex items-center justify-center font-bold text-xs flex-shrink-0">7</span>
                         <div class="truncate">
-                            <div class="truncate font-semibold">📋 複製完整紀錄</div>
-                            <div class="text-[10px] text-amber-600 font-medium truncate">到自己的 Gemini 整理</div>
+                            <div class="truncate font-semibold">📋 完成、備份與繳交</div>
+                            <div class="text-[10px] text-amber-600 font-medium truncate">Review, Copy &amp; Submit</div>
                         </div>
                     </button>
                 </nav>
@@ -165,9 +165,9 @@
                 <div class="mt-6 p-3 bg-amber-50 rounded-xl border border-amber-200/60 text-amber-800 text-xs">
                     <div class="font-bold mb-1 flex items-center gap-1.5">
                         <i class="fa-solid fa-lightbulb text-amber-500"></i>
-                        <span>校園觀察小秘訣</span>
+                        <span>社會觀察小秘訣 · Tip</span>
                     </div>
-                    <p class="text-amber-700 leading-relaxed">最好的繪本靈感來自於「用心眼睛看」，而非憑空想像。試著走一遍你每天經過的角落！</p>
+                    <p class="text-amber-700 leading-relaxed">先觀察事實，再查找資料與傾聽不同聲音。Separate facts, opinions, and assumptions.</p>
                 </div>
             </div>
         </aside>
@@ -175,14 +175,14 @@
         <!-- Content Area -->
         <main class="flex-1 bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-8 flex flex-col min-h-[600px]">
 
-            <!-- STEP 1: 校園偵探出動 -->
+            <!-- STEP 1: 社會觀察家任務 -->
             <section id="step-content-1" class="step-panel space-y-6">
                 <div class="border-b border-slate-200 pb-4">
                     <span class="px-3 py-1 bg-sky-100 text-sky-800 font-semibold text-xs rounded-full inline-block mb-2">Step 1 / 7</span>
                     <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-2">
-                        🔎 校園偵探出動！認識什麼叫「校園觀察」
+                        🌏 高中職組：社會觀察家 · Social Observer
                     </h2>
-                    <p class="text-slate-600 mt-1 text-sm">在開始寫故事之前，讓我們訓練一下「觀察力眼睛」。真誠的觀察是創作出好故事的靈魂！</p>
+                    <p class="text-slate-600 mt-1 text-sm">探究生活及社會議題，運用 AI 工具提出具備批判思考與社會關懷的跨域創新提案，並製作成一支三分鐘內的繪本影片。<br><span class="text-slate-500">Explore real-life and social issues, use AI to develop an interdisciplinary proposal with critical thinking and social care, and create a picture-book video within three minutes.</span></p>
                 </div>
 
                 <!-- Student record shortcut -->
@@ -197,10 +197,10 @@
                     </div>
                     <div class="min-w-0 flex-1">
                         <div class="flex flex-wrap items-center gap-2">
-                            <h3 class="font-extrabold text-slate-900 text-base sm:text-lg">查看我的學習紀錄</h3>
+                            <h3 class="font-extrabold text-slate-900 text-base sm:text-lg">查看我的學習紀錄 · View My Records</h3>
                             <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-bold">Google 試算表</span>
                         </div>
-                        <p class="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">點我打開班級紀錄表，查看自己已經送出的校園觀察作品。</p>
+                        <p class="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">只要能上網即可開啟班級紀錄表，查看已送出的作品。Open the class record online to view submitted work.</p>
                     </div>
                     <div class="w-9 h-9 rounded-full bg-white/80 text-pink-500 border border-pink-200 flex items-center justify-center flex-shrink-0 group-hover:bg-pink-500 group-hover:text-white transition">
                         <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
@@ -213,9 +213,9 @@
                         <div class="w-10 h-10 rounded-xl bg-emerald-500 text-white flex items-center justify-center text-lg font-bold mb-3">
                             <i class="fa-solid fa-eye"></i>
                         </div>
-                        <h3 class="font-bold text-emerald-900 text-base mb-1">1. 用真實眼睛看</h3>
+                        <h3 class="font-bold text-emerald-900 text-base mb-1">1. 觀察事實 · Observe facts</h3>
                         <p class="text-xs text-emerald-800 leading-relaxed">
-                            不憑空想像，也不問 AI。走出教室，紀錄你在校園裡「真正親眼看見」的畫面、聽見的聲音與細節。
+                            記錄時間、地點、人物、行動與數量，區分事實和推測。Record when, where, who, what happened, and how much.
                         </p>
                     </div>
 
@@ -223,9 +223,9 @@
                         <div class="w-10 h-10 rounded-xl bg-indigo-500 text-white flex items-center justify-center text-lg font-bold mb-3">
                             <i class="fa-solid fa-heart-pulse"></i>
                         </div>
-                        <h3 class="font-bold text-indigo-900 text-base mb-1">2. 用同理心去感受</h3>
+                        <h3 class="font-bold text-indigo-900 text-base mb-1">2. 傾聽多元觀點 · Listen</h3>
                         <p class="text-xs text-indigo-800 leading-relaxed">
-                            不僅是發現問題，更是關心「誰受到了影響？」。老師、同學、打掃阿姨或是校園裡的浪貓樹木？
+                            問「誰受益、誰承擔代價、誰沒有被聽見？」Listen to affected groups without speaking for them.
                         </p>
                     </div>
 
@@ -233,9 +233,9 @@
                         <div class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center text-lg font-bold mb-3">
                             <i class="fa-solid fa-wand-magic-sparkles"></i>
                         </div>
-                        <h3 class="font-bold text-amber-900 text-base mb-1">3. 先創作，再自主整理</h3>
+                        <h3 class="font-bold text-amber-900 text-base mb-1">3. 查證後再用 AI · Verify first</h3>
                         <p class="text-xs text-amber-800 leading-relaxed">
-                            先提出能在校園實踐的小點子；完成後再複製自己的紀錄與提示詞，到自己的 Google Gemini 整理。
+                            AI 可協助整理與發想，但資料來源、偏見、可行性和倫理仍由你檢查。You remain responsible for evidence and ethics.
                         </p>
                     </div>
                 </div>
@@ -244,20 +244,20 @@
                 <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-4">
                     <h3 class="font-bold text-slate-800 text-base flex items-center gap-2">
                         <i class="fa-solid fa-circle-question text-sky-600"></i>
-                        <span>小偵探辨識測驗：哪一個才是「真正的校園觀察」？</span>
+                        <span>批判思考小測驗 · Which statement is evidence-based?</span>
                     </h3>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                         <button onclick="checkDetectiveQuiz(false)" class="p-4 bg-white border border-slate-200 rounded-xl text-left hover:border-red-400 hover:bg-red-50/50 transition group">
-                            <div class="text-xs font-bold text-slate-400 group-hover:text-red-500 mb-1">選項 A</div>
-                            <div class="text-sm text-slate-700 font-medium">「我覺得大家都不愛環保，垃圾桶一定都很亂。」</div>
-                            <div class="text-[11px] text-slate-400 mt-2">（個人主觀刻板印象，沒有具體觀察）</div>
+                            <div class="text-xs font-bold text-slate-400 group-hover:text-red-500 mb-1">選項 A · Option A</div>
+                            <div class="text-sm text-slate-700 font-medium">「老人都不會用手機，所以線上服務一定不適合他們。」</div>
+                            <div class="text-[11px] text-slate-400 mt-2">A stereotype without evidence · 沒有證據的刻板印象</div>
                         </button>
 
                         <button onclick="checkDetectiveQuiz(true)" class="p-4 bg-white border border-slate-200 rounded-xl text-left hover:border-emerald-500 hover:bg-emerald-50/50 transition group">
-                            <div class="text-xs font-bold text-slate-400 group-hover:text-emerald-600 mb-1">選項 B</div>
-                            <div class="text-sm text-slate-700 font-medium">「中午打飯後，回收桶旁邊常積了三桶廚餘，打掃同學滿頭大汗在分類。」</div>
-                            <div class="text-[11px] text-slate-400 mt-2">（有具體地點、人物現象與情感體驗）</div>
+                            <div class="text-xs font-bold text-slate-400 group-hover:text-emerald-600 mb-1">選項 B · Option B</div>
+                            <div class="text-sm text-slate-700 font-medium">「週二下午，我觀察三位長者操作醫院掛號機；其中兩位在語言選單停留超過一分鐘，並向志工求助。」</div>
+                            <div class="text-[11px] text-slate-400 mt-2">Specific time, people, behavior and count · 有時間、人物、行動與數量</div>
                         </button>
                     </div>
                     <div id="quizFeedback" class="hidden p-3 rounded-xl text-xs font-medium"></div>
@@ -265,45 +265,60 @@
 
                 <div class="pt-4 flex justify-end">
                     <button onclick="goToStep(2)" class="px-6 py-2.5 bg-sky-600 hover:bg-sky-700 text-white rounded-xl font-bold shadow-md shadow-sky-200 transition flex items-center gap-2">
-                        <span>下一步：尋找故事靈感</span>
+                        <span>下一步：選擇議題 · Choose an Issue</span>
                         <i class="fa-solid fa-arrow-right text-xs"></i>
                     </button>
                 </div>
             </section>
 
-            <!-- STEP 2: 尋找故事靈感 (20 校園議題) -->
+            <!-- STEP 2: 社會關懷與 SDGs -->
             <section id="step-content-2" class="step-panel hidden space-y-6">
                 <div class="border-b border-slate-200 pb-4">
                     <span class="px-3 py-1 bg-sky-100 text-sky-800 font-semibold text-xs rounded-full inline-block mb-2">Step 2 / 7</span>
                     <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-2">
-                        💡 尋找故事靈感：20 個校園觀察靈感卡片
+                        💡 社會關懷與 SDGs · Social Care &amp; SDGs
                     </h2>
-                    <p class="text-slate-600 mt-1 text-sm">點選一個你最感興趣或有感觸的議題卡片，系統會自動帶入你的故事主題！</p>
+                    <p class="text-slate-600 mt-1 text-sm">選擇你真正想了解的議題，不急著給答案。Choose an issue you genuinely want to understand before proposing a solution.</p>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 text-xs">
+                    <div class="rounded-xl bg-red-50 border border-red-200 p-3"><strong>SDG 1 終結貧窮</strong><br><span class="text-slate-500">No Poverty</span></div>
+                    <div class="rounded-xl bg-amber-50 border border-amber-200 p-3"><strong>SDG 2 消除飢餓</strong><br><span class="text-slate-500">Zero Hunger</span></div>
+                    <div class="rounded-xl bg-emerald-50 border border-emerald-200 p-3"><strong>SDG 3 健康福祉</strong><br><span class="text-slate-500">Good Health</span></div>
+                    <div class="rounded-xl bg-rose-50 border border-rose-200 p-3"><strong>SDG 4 優質教育</strong><br><span class="text-slate-500">Quality Education</span></div>
+                    <div class="rounded-xl bg-orange-50 border border-orange-200 p-3"><strong>SDG 5 性別平等</strong><br><span class="text-slate-500">Gender Equality</span></div>
+                    <div class="rounded-xl bg-purple-50 border border-purple-200 p-3"><strong>SDG 10 減少不平等</strong><br><span class="text-slate-500">Reduced Inequalities</span></div>
+                </div>
+
+                <div class="bg-indigo-50 border border-indigo-200 rounded-2xl p-4 text-sm text-indigo-950">
+                    <strong>關懷對象 · People we care about：</strong>
+                    弱勢與近貧家庭、高齡者、身心障礙者、原住民族、新住民與外籍人士、不同性別認同者及其他被邊緣化群體。<br>
+                    <span class="text-indigo-700">Economically vulnerable families, older adults, persons with disabilities, Indigenous peoples, immigrants and international residents, gender-diverse people, and other marginalized groups.</span>
                 </div>
 
                 <!-- Current Selection Alert -->
                 <div id="selectedTopicBanner" class="bg-sky-50 border border-sky-200 rounded-xl p-3 flex items-center justify-between text-sm">
                     <div class="flex items-center gap-2">
-                        <span class="text-sky-600 font-bold">目前已選擇主題：</span>
-                        <span id="currentTopicText" class="font-bold text-slate-800 bg-white px-3 py-1 rounded-lg border border-sky-200">尚未選擇（請點擊下方卡片）</span>
+                        <span class="text-sky-600 font-bold">已選議題 · Selected：</span>
+                        <span id="currentTopicText" class="font-bold text-slate-800 bg-white px-3 py-1 rounded-lg border border-sky-200">尚未選擇 · Not selected</span>
                     </div>
                     <button onclick="goToStep(3)" class="text-xs text-sky-700 font-bold hover:underline flex items-center gap-1">
-                        <span>確認並前往填寫觀察</span>
+                        <span>開始探究 · Start</span>
                         <i class="fa-solid fa-chevron-right"></i>
                     </button>
                 </div>
 
-                <!-- 20 Cards Grid -->
+                <!-- Social issue cards -->
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3" id="topicCardsContainer">
                     <!-- Cards dynamically inserted or template below -->
                 </div>
 
                 <div class="pt-4 flex justify-between items-center border-t border-slate-100">
                     <button onclick="goToStep(1)" class="px-4 py-2 text-slate-500 hover:text-slate-800 text-sm font-medium">
-                        <i class="fa-solid fa-arrow-left text-xs mr-1"></i> 上一步
+                        <i class="fa-solid fa-arrow-left text-xs mr-1"></i> 上一步 · Back
                     </button>
                     <button onclick="goToStep(3)" class="px-6 py-2.5 bg-sky-600 hover:bg-sky-700 text-white rounded-xl font-bold shadow-md transition flex items-center gap-2">
-                        <span>下一步：寫下我的發現</span>
+                        <span>下一步：觀察與查證 · Observe</span>
                         <i class="fa-solid fa-arrow-right text-xs"></i>
                     </button>
                 </div>
@@ -314,43 +329,52 @@
                 <div class="border-b border-slate-200 pb-4">
                     <span class="px-3 py-1 bg-sky-100 text-sky-800 font-semibold text-xs rounded-full inline-block mb-2">Step 3 / 7</span>
                     <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-2">
-                        👀 我發現了什麼？真實校園問題定義
+                        👀 觀察、提問與查證 · Observe, Question &amp; Verify
                     </h2>
-                    <p class="text-slate-600 mt-1 text-sm">請寫下你在校園中真正的觀察，不要問 AI，用自己的眼睛看！這會是整套鷹架的靈魂。</p>
+                    <p class="text-slate-600 mt-1 text-sm">從生活中的具體現象出發，提出可探究的問題，再用可靠資料查證。Start with observable facts, ask a researchable question, and verify it with reliable sources.</p>
                 </div>
 
                 <div class="space-y-5">
                     <!-- Topic Input -->
                     <div>
-                        <label class="block text-sm font-bold text-slate-800 mb-1">我的故事主題名稱</label>
-                        <input type="text" id="inputTopic" placeholder="例如：🍱 桶餐剩食小偵探" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 text-sm">
+                        <label class="block text-sm font-bold text-slate-800 mb-1">議題／故事名稱 · Issue / Story Title</label>
+                        <input type="text" id="inputTopic" placeholder="例如：📱 被數位服務遺忘的人 / Left Behind by Digital Services" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 text-sm">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-slate-800 mb-1">我的核心探究問題 · Inquiry Question</label>
+                        <textarea id="inputQuestion" rows="2" placeholder="誰在什麼情境中遇到什麼障礙？背後可能有哪些制度、科技、文化或經濟原因？&#10;Who faces what barrier, in which situation, and what structural causes may be involved?" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 text-sm"></textarea>
                     </div>
 
                     <!-- Essential Field: 📸 我真的看到什麼？ -->
                     <div class="bg-amber-50/70 border border-amber-200 rounded-2xl p-4 space-y-2">
                         <label class="block text-sm font-bold text-amber-900 flex items-center gap-2">
                             <span class="text-lg">📸</span>
-                            <span>我真的看到什麼？（靈魂關鍵欄位）</span>
-                            <span class="text-xs bg-amber-200 text-amber-900 px-2 py-0.5 rounded font-normal">親眼觀察具體細節</span>
+                            <span>我實際觀察到什麼？ · What did I actually observe?</span>
+                            <span class="text-xs bg-amber-200 text-amber-900 px-2 py-0.5 rounded font-normal">事實 ≠ 推測</span>
                         </label>
-                        <textarea id="inputObservation" rows="4" placeholder="請詳細寫下：你在哪裡？什麼時間？看到什麼具體畫面？聽見什麼？
-例如：每天中午12:35吃完飯後，班上的桶餐回收區總是有半桶滿滿的青菜跟炒肉，走廊上的廚餘桶旁邊也常溢出來..." class="w-full px-4 py-3 rounded-xl border border-amber-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 text-sm bg-white"></textarea>
-                        <p class="text-xs text-amber-700">💡 提示：越具體的畫面（人物動作、顏色、聲音、數量），故事會越感人！</p>
+                        <textarea id="inputObservation" rows="4" placeholder="寫下時間、地點、人物、動作、原話與可量化資訊。不要用『大家都…』或『一定是…』。&#10;Record time, place, people, actions, exact words, and measurable details. Avoid overgeneralization." class="w-full px-4 py-3 rounded-xl border border-amber-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 text-sm bg-white"></textarea>
+                        <p class="text-xs text-amber-700">💡 哪些是你親眼所見？哪些仍需要訪談或資料驗證？What still needs verification?</p>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-slate-800 mb-1">資料與來源 · Evidence &amp; Sources</label>
+                        <textarea id="inputEvidence" rows="3" placeholder="列出訪談、問卷、政府資料、學術或可信機構來源；記下日期與連結。至少用兩種不同來源交叉查證。&#10;List interviews, surveys, government data, research, or trusted organizations. Cross-check at least two sources." class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 text-sm"></textarea>
                     </div>
 
                     <!-- Problem statement -->
                     <div>
-                        <label class="block text-sm font-bold text-slate-800 mb-1">我覺得這是一個問題，因為...</label>
-                        <textarea id="inputProblem" rows="3" placeholder="例如：食物浪費很可惜，而且打掃同學清理溢出的汁液非常辛苦，夏天還容易吸引蚊蠅與臭味..." class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 text-sm"></textarea>
+                        <label class="block text-sm font-bold text-slate-800 mb-1">問題的成因與重要性 · Causes &amp; Significance</label>
+                        <textarea id="inputProblem" rows="3" placeholder="這是個人選擇、制度設計、資源分配、文化偏見，還是多重原因？若不處理，短期與長期會發生什麼？&#10;Is it caused by personal choices, systems, resource distribution, cultural bias, or several factors?" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 text-sm"></textarea>
                     </div>
                 </div>
 
                 <div class="pt-4 flex justify-between items-center border-t border-slate-100">
                     <button onclick="goToStep(2)" class="px-4 py-2 text-slate-500 hover:text-slate-800 text-sm font-medium">
-                        <i class="fa-solid fa-arrow-left text-xs mr-1"></i> 上一步
+                        <i class="fa-solid fa-arrow-left text-xs mr-1"></i> 上一步 · Back
                     </button>
                     <button onclick="goToStep(4)" class="px-6 py-2.5 bg-sky-600 hover:bg-sky-700 text-white rounded-xl font-bold shadow-md transition flex items-center gap-2">
-                        <span>下一步：看見誰受到影響</span>
+                        <span>下一步：多元觀點 · Perspectives</span>
                         <i class="fa-solid fa-arrow-right text-xs"></i>
                     </button>
                 </div>
@@ -361,37 +385,47 @@
                 <div class="border-b border-slate-200 pb-4">
                     <span class="px-3 py-1 bg-sky-100 text-sky-800 font-semibold text-xs rounded-full inline-block mb-2">Step 4 / 7</span>
                     <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-2">
-                        ❤️ 誰受到影響？人文關懷 ＋ 角色刻劃
+                        ❤️ 權益、關係人與多元觀點 · Rights &amp; Perspectives
                     </h2>
-                    <p class="text-slate-600 mt-1 text-sm">好故事的核心在於同理心。這個問題影響了誰？他有什麼心情與感受？</p>
+                    <p class="text-slate-600 mt-1 text-sm">同理不是替別人發言，而是傾聽並呈現不同立場。Empathy means listening to people and representing their views fairly.</p>
                 </div>
 
                 <div class="space-y-5">
                     <div>
-                        <label class="block text-sm font-bold text-slate-800 mb-1">受影響的人或對象（故事的主角/配角）</label>
-                        <input type="text" id="inputPeople" placeholder="例如：午餐股長阿傑、負責清理廚餘的衛生隊員、阿姨、或是校園裡找不到乾淨水喝的小鳥" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 text-sm">
+                        <label class="block text-sm font-bold text-slate-800 mb-1">誰受影響？誰能決策？ · Stakeholders &amp; Decision-makers</label>
+                        <input type="text" id="inputPeople" placeholder="例如：高齡使用者、照顧者、第一線服務人員、政府部門、科技公司／older users, caregivers, staff, government, companies" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 text-sm">
                     </div>
 
                     <div>
-                        <label class="block text-sm font-bold text-slate-800 mb-1">他們可能的心情與感受</label>
-                        <textarea id="inputFeeling" rows="3" placeholder="例如：午餐股長覺得很無奈又心疼食物；負責清理的同學覺得很髒很辛苦，也很沮喪大家不配合..." class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 text-sm"></textarea>
+                        <label class="block text-sm font-bold text-slate-800 mb-1">需求、感受與權利 · Needs, Feelings &amp; Rights</label>
+                        <textarea id="inputFeeling" rows="3" placeholder="他們如何描述自己的需要？涉及健康、教育、平等、隱私、移動或參與等哪些權利？&#10;How do they describe their needs? Which rights are involved?" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 text-sm"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-slate-800 mb-1">不同或相反觀點 · Alternative / Opposing Views</label>
+                        <textarea id="inputCounterView" rows="3" placeholder="誰可能不同意你的看法？他們重視什麼（成本、安全、效率、文化或公平）？哪些部分合理？&#10;Who may disagree, what do they value, and which concerns are reasonable?" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 text-sm"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-slate-800 mb-1">對應 SDGs · Related SDGs</label>
+                        <input type="text" id="inputSDGs" placeholder="例如：SDG 3、SDG 10、SDG 11，並說明連結原因 / Explain why" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 text-sm">
                     </div>
 
                     <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-4 text-xs text-indigo-800 space-y-1">
                         <div class="font-bold text-indigo-900 flex items-center gap-1.5">
                             <i class="fa-solid fa-heart text-rose-500"></i>
-                            <span>思考靈感引導</span>
+                            <span>批判思考檢核 · Critical Thinking Check</span>
                         </div>
-                        <p>故事如果只有「事情」，會像公文；有了「人的情緒與體諒」，才會打動聽眾與評判的心！</p>
+                        <p>我是否把某個群體描寫成只能被幫助的人？我是否詢問當事人真正想要什麼？Am I reinforcing stereotypes or ignoring people’s agency?</p>
                     </div>
                 </div>
 
                 <div class="pt-4 flex justify-between items-center border-t border-slate-100">
                     <button onclick="goToStep(3)" class="px-4 py-2 text-slate-500 hover:text-slate-800 text-sm font-medium">
-                        <i class="fa-solid fa-arrow-left text-xs mr-1"></i> 上一步
+                        <i class="fa-solid fa-arrow-left text-xs mr-1"></i> 上一步 · Back
                     </button>
                     <button onclick="goToStep(5)" class="px-6 py-2.5 bg-sky-600 hover:bg-sky-700 text-white rounded-xl font-bold shadow-md transition flex items-center gap-2">
-                        <span>下一步：如果可以改變？</span>
+                        <span>下一步：創新提案 · Proposal</span>
                         <i class="fa-solid fa-arrow-right text-xs"></i>
                     </button>
                 </div>
@@ -402,31 +436,39 @@
                 <div class="border-b border-slate-200 pb-4">
                     <span class="px-3 py-1 bg-sky-100 text-sky-800 font-semibold text-xs rounded-full inline-block mb-2">Step 5 / 7</span>
                     <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-2">
-                        🧠 如果可以改變？創意可行解決方案
+                        🧠 跨域創新提案 · Interdisciplinary Innovation
                     </h2>
-                    <p class="text-slate-600 mt-1 text-sm">提出一個具有創意、但在國中校園裡「真的能夠實踐」的改善構想。</p>
+                    <p class="text-slate-600 mt-1 text-sm">結合兩個以上領域，提出兼顧需求、權利、成本與永續性的可測試方案。Combine two or more fields into a testable, ethical and sustainable proposal.</p>
                 </div>
 
                 <div class="space-y-5">
                     <div>
-                        <label class="block text-sm font-bold text-slate-800 mb-1">我想到的創意改善方法（可行提案）</label>
-                        <textarea id="inputSolution" rows="4" placeholder="例如：1. 舉辦『飯量自由選』問卷調查，請廚房調整肉菜比例
-2. 設計『剩食英雄排行榜』，剩食最少的班級可以獲得優先選歌播放權
-3. 設立『校園廚餘堆肥小花園』，讓剩食變成植栽的養分..." class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 text-sm"></textarea>
+                        <label class="block text-sm font-bold text-slate-800 mb-1">我的跨域創新方案 · My Interdisciplinary Proposal</label>
+                        <textarea id="inputSolution" rows="5" placeholder="方案結合哪些領域（科技、設計、法律、社福、教育、商業、藝術）？誰參與？如何從小規模測試？&#10;Which fields does it combine? Who participates? How can it be piloted on a small scale?" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 text-sm"></textarea>
                     </div>
 
                     <div>
-                        <label class="block text-sm font-bold text-slate-800 mb-1">我希望這個故事告訴大家的核心理念（留給觀眾的思考）</label>
-                        <input type="text" id="inputMessage" placeholder="例如：珍惜每一粒糧食，就是對土地與辛苦煮飯阿姨最大的感謝！" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 text-sm">
+                        <label class="block text-sm font-bold text-slate-800 mb-1">限制、風險與評估方法 · Limits, Risks &amp; Evaluation</label>
+                        <textarea id="inputConstraints" rows="3" placeholder="成本、隱私、可近用性、偏見或副作用是什麼？用哪些指標判斷有效？若失敗如何調整？&#10;Consider cost, privacy, accessibility, bias, unintended effects, and measurable indicators." class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 text-sm"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-slate-800 mb-1">AI 如何協助、我如何查核 · AI Use &amp; Verification</label>
+                        <textarea id="inputAIUse" rows="3" placeholder="AI 協助了哪些工作？你如何確認資料、修正偏見並保護個資？&#10;What did AI assist with? How did you verify facts, reduce bias, and protect personal data?" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 text-sm"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-slate-800 mb-1">故事核心理念 · Core Message</label>
+                        <input type="text" id="inputMessage" placeholder="觀眾看完後應重新思考什麼？What should the audience reconsider or do?" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 text-sm">
                     </div>
                 </div>
 
                 <div class="pt-4 flex justify-between items-center border-t border-slate-100">
                     <button onclick="goToStep(4)" class="px-4 py-2 text-slate-500 hover:text-slate-800 text-sm font-medium">
-                        <i class="fa-solid fa-arrow-left text-xs mr-1"></i> 上一步
+                        <i class="fa-solid fa-arrow-left text-xs mr-1"></i> 上一步 · Back
                     </button>
                     <button onclick="goToStep(6)" class="px-6 py-2.5 bg-sky-600 hover:bg-sky-700 text-white rounded-xl font-bold shadow-md transition flex items-center gap-2">
-                        <span>下一步：進入六幕故事工作坊</span>
+                        <span>下一步：六幕繪本 · Storyboard</span>
                         <i class="fa-solid fa-arrow-right text-xs"></i>
                     </button>
                 </div>
@@ -438,12 +480,12 @@
                     <div>
                         <span class="px-3 py-1 bg-sky-100 text-sky-800 font-semibold text-xs rounded-full inline-block mb-2">Step 6 / 7</span>
                         <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-2">
-                            📖 六幕故事工作坊（C1 ～ C6）
+                            📖 六幕繪本工作坊 · Six-scene Storyboard
                         </h2>
-                        <p class="text-slate-600 mt-1 text-sm">不需要一開始就寫長文，每一幕回答簡短問題，故事骨架就完成囉！</p>
+                        <p class="text-slate-600 mt-1 text-sm">把證據、衝突、多元觀點與提案轉化為三分鐘內能理解的故事。Turn evidence, conflict, perspectives and your proposal into a story under three minutes.</p>
                     </div>
                     <button onclick="autoFillActsFromSteps()" class="px-3 py-1.5 bg-sky-50 hover:bg-sky-100 text-sky-700 border border-sky-300 rounded-lg text-xs font-bold transition flex items-center gap-1">
-                        <i class="fa-solid fa-wand-magic"></i> 根據 Step 3~5 自動套用草稿
+                        <i class="fa-solid fa-wand-magic"></i> 自動建立草稿 · Draft from Steps 3–5
                     </button>
                 </div>
 
@@ -453,69 +495,69 @@
                     <div class="border border-slate-200 rounded-2xl p-4 bg-slate-50/50 hover:bg-white transition space-y-2">
                         <div class="flex items-center gap-2 text-sky-700 font-bold text-sm">
                             <span class="bg-sky-600 text-white px-2.5 py-0.5 rounded-lg text-xs">C1</span>
-                            <span>平常的校園（背景與平常生活）</span>
+                            <span>生活現場 · Everyday Context</span>
                         </div>
-                        <p class="text-xs text-slate-500">【提示】主角是誰？在哪裡？平常正在做什麼？</p>
-                        <textarea id="inputC1" rows="2" placeholder="主角是國二的阿傑，他平常最期待中午吃午餐的歡樂時刻，但每次午餐時間總是很匆忙..." class="w-full px-3 py-2 text-sm bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-sky-500"></textarea>
+                        <p class="text-xs text-slate-500">主角是誰？他的文化、語言與生活背景如何影響經驗？Who is the protagonist, and what is their context?</p>
+                        <textarea id="inputC1" rows="2" placeholder="一位外籍學生陪寄宿家庭的長者到醫院掛號，發現許多服務只提供中文數位介面… / An international student accompanies an older adult to a hospital…" class="w-full px-3 py-2 text-sm bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-sky-500"></textarea>
                     </div>
 
                     <!-- C2 -->
                     <div class="border border-slate-200 rounded-2xl p-4 bg-slate-50/50 hover:bg-white transition space-y-2">
                         <div class="flex items-center gap-2 text-amber-700 font-bold text-sm">
                             <span class="bg-amber-500 text-white px-2.5 py-0.5 rounded-lg text-xs">C2</span>
-                            <span>咦？好像怪怪的（發現校園問題）</span>
+                            <span>看見不平等 · Notice the Problem</span>
                         </div>
-                        <p class="text-xs text-slate-500">【提示】主角發現什麼校園現象？看見、聽見或感受到什麼？</p>
-                        <textarea id="inputC2" rows="2" placeholder="有一天他當午餐股長，赫然發現收回來的菜桶裡居然還剩下一大半的蔬菜與肉汁，垃圾桶周圍湯汁溢出..." class="w-full px-3 py-2 text-sm bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-sky-500"></textarea>
+                        <p class="text-xs text-slate-500">用具體觀察呈現問題，不先替觀眾下結論。Show evidence before conclusions.</p>
+                        <textarea id="inputC2" rows="2" placeholder="用時間、人物行動與數量呈現障礙，不使用『都不會』等概括語句。 / Show the barrier through observable details." class="w-full px-3 py-2 text-sm bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-sky-500"></textarea>
                     </div>
 
                     <!-- C3 -->
                     <div class="border border-slate-200 rounded-2xl p-4 bg-slate-50/50 hover:bg-white transition space-y-2">
                         <div class="flex items-center gap-2 text-rose-700 font-bold text-sm">
                             <span class="bg-rose-500 text-white px-2.5 py-0.5 rounded-lg text-xs">C3</span>
-                            <span>原來有人受到影響（情緒與同理心）</span>
+                            <span>不同人的聲音 · Voices &amp; Impact</span>
                         </div>
-                        <p class="text-xs text-slate-500">【提示】這個問題影響了誰？他有什麼感受？</p>
-                        <textarea id="inputC3" rows="2" placeholder="他看到負責打扫廚餘區的小明同學滿頭大汗地清理刷洗，還發出嘆息：『為什麼大家都不珍惜呢？』阿傑心裡很震撼..." class="w-full px-3 py-2 text-sm bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-sky-500"></textarea>
+                        <p class="text-xs text-slate-500">呈現受影響者與不同立場，避免刻板印象。Show multiple perspectives without stereotypes.</p>
+                        <textarea id="inputC3" rows="2" placeholder="讓當事人、第一線人員與決策者說出不同需求，也呈現合理的相反觀點。 / Let different stakeholders speak." class="w-full px-3 py-2 text-sm bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-sky-500"></textarea>
                     </div>
 
                     <!-- C4 -->
                     <div class="border border-slate-200 rounded-2xl p-4 bg-slate-50/50 hover:bg-white transition space-y-2">
                         <div class="flex items-center gap-2 text-indigo-700 font-bold text-sm">
                             <span class="bg-indigo-600 text-white px-2.5 py-0.5 rounded-lg text-xs">C4</span>
-                            <span>我們可以怎麼做？（調查、思考與資料整理）</span>
+                            <span>追問與查證 · Investigate &amp; Verify</span>
                         </div>
-                        <p class="text-xs text-slate-500">【提示】主角如何調查、詢問、觀察或查資料，找出可能的方法？</p>
-                        <textarea id="inputC4" rows="2" placeholder="阿傑開始做全校問卷調查，發現大家常因菜量不均或不喜歡某些調味而剩下食物，於是和同學一起討論改善方法..." class="w-full px-3 py-2 text-sm bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-sky-500"></textarea>
+                        <p class="text-xs text-slate-500">主角如何訪談、找資料、辨認偏見並修正原本想法？How does evidence change their thinking?</p>
+                        <textarea id="inputC4" rows="2" placeholder="主角用訪談、問卷與可信資料交叉查證；新的證據推翻了哪個原本假設？ / How did evidence change the assumption?" class="w-full px-3 py-2 text-sm bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-sky-500"></textarea>
                     </div>
 
                     <!-- C5 -->
                     <div class="border border-slate-200 rounded-2xl p-4 bg-slate-50/50 hover:bg-white transition space-y-2">
                         <div class="flex items-center gap-2 text-emerald-700 font-bold text-sm">
                             <span class="bg-emerald-600 text-white px-2.5 py-0.5 rounded-lg text-xs">C5</span>
-                            <span>讓改變發生（實踐創意提案）</span>
+                            <span>測試創新提案 · Test the Proposal</span>
                         </div>
-                        <p class="text-xs text-slate-500">【提示】學生真正提出一個可行又有創意的解決方案，並付諸行動。</p>
-                        <textarea id="inputC5" rows="2" placeholder="阿傑發起『飯量自由自主分區』與『校園減食獎勵活動』，並與午餐廚房溝通微調菜色量，大家開始熱情響應！" class="w-full px-3 py-2 text-sm bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-sky-500"></textarea>
+                        <p class="text-xs text-slate-500">呈現跨域合作、小規模測試、困難與調整。Show collaboration, a pilot, obstacles and revision.</p>
+                        <textarea id="inputC5" rows="2" placeholder="團隊結合設計、科技與社福做小規模測試，遇到什麼問題，又如何依回饋調整？ / Pilot, feedback and iteration." class="w-full px-3 py-2 text-sm bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-sky-500"></textarea>
                     </div>
 
                     <!-- C6 -->
                     <div class="border border-slate-200 rounded-2xl p-4 bg-slate-50/50 hover:bg-white transition space-y-2">
                         <div class="flex items-center gap-2 text-purple-700 font-bold text-sm">
                             <span class="bg-purple-600 text-white px-2.5 py-0.5 rounded-lg text-xs">C6</span>
-                            <span>校園變得不一樣了（結尾與有力量的話）</span>
+                            <span>改變與未完課題 · Change &amp; Reflection</span>
                         </div>
-                        <p class="text-xs text-slate-500">【提示】事情最後如何改變？主角學到什麼？留下一句有力量的話。</p>
-                        <textarea id="inputC6" rows="2" placeholder="三週後，廚餘桶減量了七成，打掃同學露出燦爛微笑。阿傑明白：『每一個微小的關心，都能讓校園變得更美好。』" class="w-full px-3 py-2 text-sm bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-sky-500"></textarea>
+                        <p class="text-xs text-slate-500">成果如何衡量？還有哪些限制？用一句話邀請觀眾繼續思考。What changed, and what remains unresolved?</p>
+                        <textarea id="inputC6" rows="2" placeholder="用成效指標呈現改變，也誠實留下限制與下一步。 / Show measurable change and honestly name what remains unresolved." class="w-full px-3 py-2 text-sm bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-sky-500"></textarea>
                     </div>
                 </div>
 
                 <div class="pt-4 flex justify-between items-center border-t border-slate-100">
                     <button onclick="goToStep(5)" class="px-4 py-2 text-slate-500 hover:text-slate-800 text-sm font-medium">
-                        <i class="fa-solid fa-arrow-left text-xs mr-1"></i> 上一步
+                        <i class="fa-solid fa-arrow-left text-xs mr-1"></i> 上一步 · Back
                     </button>
                     <button onclick="goToStep(7)" class="px-6 py-2.5 bg-amber-500 hover:bg-amber-600 text-white rounded-xl font-bold shadow-md transition flex items-center gap-2">
-                        <span>下一步：完成與繳交</span>
+                        <span>下一步：完成與繳交 · Finish</span>
                         <i class="fa-solid fa-arrow-right text-xs"></i>
                     </button>
                 </div>
@@ -526,24 +568,24 @@
                 <div class="border-b border-slate-200 pb-4">
                     <span class="px-3 py-1 bg-amber-100 text-amber-900 font-semibold text-xs rounded-full inline-block mb-2">Step 7 / 7 Final</span>
                     <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-2">
-                        📋 完成紀錄、複製提示詞與正式繳交
+                        📋 完成、備份與繳交 · Review, Back Up &amp; Submit
                     </h2>
-                    <p class="text-slate-600 mt-1 text-sm">先填寫基本資料，再一鍵複製 Step 1～6 的完整紀錄與整理提示詞。請自行開啟自己的 Google Gemini、貼上內容並進行整理；本網站不會呼叫 Gemini，也不使用任何 API Key。</p>
+                    <p class="text-slate-600 mt-1 text-sm">先檢查資料並自行備份，再複製雙語提示詞到 Gemini。Review and back up your work before using Gemini. This page does not send data to any AI service.</p>
                 </div>
 
                 <!-- Student Information Header -->
                 <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 grid grid-cols-1 sm:grid-cols-3 gap-3">
                     <div>
-                        <label class="block text-xs font-bold text-slate-500 mb-1">班級</label>
-                        <input type="text" id="studentClassName" placeholder="例如：801" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm bg-white">
+                        <label class="block text-xs font-bold text-slate-500 mb-1">班級 · Class</label>
+                        <input type="text" id="studentClassName" placeholder="例如：高一國際專班" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm bg-white">
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-slate-500 mb-1">座號</label>
+                        <label class="block text-xs font-bold text-slate-500 mb-1">座號 · No.</label>
                         <input type="text" id="studentNumber" placeholder="例如：12" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm bg-white">
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-slate-500 mb-1">姓名</label>
-                        <input type="text" id="studentName" placeholder="例如：陳大明" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm bg-white">
+                        <label class="block text-xs font-bold text-slate-500 mb-1">姓名 · Name</label>
+                        <input type="text" id="studentName" placeholder="中文或英文姓名" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm bg-white">
                     </div>
                 </div>
 
@@ -552,18 +594,18 @@
                     <div>
                         <h3 class="text-lg font-bold flex items-center gap-2 justify-center sm:justify-start">
                             <i class="fa-regular fa-copy"></i>
-                            <span>把自己的完整紀錄帶到 Google Gemini</span>
+                            <span>複製完整雙語紀錄到 Gemini · Copy Full Prompt</span>
                         </h3>
-                        <p class="text-amber-100 text-xs mt-1">按下複製後，網站只會把文字放進剪貼簿，不會傳送資料給任何 AI 服務。</p>
+                        <p class="text-amber-100 text-xs mt-1">只會複製到剪貼簿，不會自動上傳到 AI。It only copies text to your clipboard.</p>
                     </div>
                     <div class="mt-5 flex flex-col sm:flex-row gap-3">
                         <button onclick="copyFullPrompt()" class="px-6 py-3 bg-white text-amber-700 hover:bg-amber-50 rounded-xl font-extrabold shadow-md hover:shadow-lg transition flex items-center justify-center gap-2 text-sm">
                             <i class="fa-regular fa-copy text-amber-500"></i>
-                            <span>一鍵複製完整紀錄＋提示詞</span>
+                            <span>複製完整紀錄＋提示詞 · Copy</span>
                         </button>
                         <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-amber-900/30 hover:bg-amber-900/40 text-white border border-white/30 rounded-xl font-bold transition flex items-center justify-center gap-2 text-sm">
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            <span>開啟 Google Gemini</span>
+                            <span>開啟 Gemini · Open</span>
                         </a>
                     </div>
                 </div>
@@ -573,7 +615,7 @@
                     <button onclick="togglePromptPreview()" class="w-full flex justify-between items-center text-xs font-bold text-slate-600 hover:text-slate-900">
                         <span class="flex items-center gap-1.5">
                             <i class="fa-solid fa-code text-slate-400"></i>
-                            <span>檢視／複製傳送給 Gemini 的完整 Prompt</span>
+                            <span>檢視完整 Prompt · Preview</span>
                         </span>
                         <i id="promptChevron" class="fa-solid fa-chevron-down text-slate-400"></i>
                     </button>
@@ -581,7 +623,7 @@
                         <textarea id="promptPreviewText" readonly rows="12" class="w-full p-3 bg-slate-900 text-emerald-400 font-mono text-xs rounded-xl border border-slate-800"></textarea>
                         <button onclick="copyFullPrompt()" class="w-full sm:w-auto px-4 py-2 bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold rounded-lg transition flex items-center justify-center gap-1.5">
                             <i class="fa-regular fa-copy"></i>
-                            <span>複製完整 Prompt</span>
+                            <span>複製 Prompt · Copy</span>
                         </button>
                     </div>
                 </div>
@@ -590,19 +632,32 @@
                 <div class="p-5 bg-emerald-50 border border-emerald-200 rounded-2xl">
                     <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
                         <div>
-                            <h3 class="font-bold text-emerald-900">☁️ 正式繳交給老師</h3>
-                            <p class="text-xs text-emerald-700 mt-1">確認 Step 1～6 與基本資料後，將原始填寫紀錄儲存到老師的 Google 試算表。</p>
+                            <h3 class="font-bold text-emerald-900">☁️ 正式繳交 · Submit to Teacher</h3>
+                            <p class="text-xs text-emerald-700 mt-1">送出後即使校內防火牆擋住 GAS 回傳，頁面仍會保留你的完整紀錄；可開啟「我的紀錄」查看試算表。If the firewall blocks the response, your on-page copy remains available.</p>
                         </div>
                         <button id="btnSubmitSheet" onclick="submitToGoogleSheet()" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold shadow-md transition flex items-center gap-2 flex-shrink-0">
                             <i class="fa-solid fa-cloud-arrow-up"></i>
-                            <span>儲存作品到老師系統</span>
+                            <span>儲存到老師系統 · Submit</span>
                         </button>
                     </div>
                 </div>
 
+                <div class="border border-sky-200 bg-sky-50 rounded-2xl p-4 space-y-3">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <div>
+                            <h3 class="font-bold text-sky-900">🧾 我的完整紀錄 · My Full Record</h3>
+                            <p class="text-xs text-sky-700">內容會自動保留在目前瀏覽器；也可下載文字檔備份。Saved in this browser; download a text backup anytime.</p>
+                        </div>
+                        <button onclick="downloadStudentRecord()" class="px-4 py-2 bg-sky-700 hover:bg-sky-800 text-white text-xs font-bold rounded-lg transition">
+                            <i class="fa-solid fa-download mr-1"></i>下載備份 · Download
+                        </button>
+                    </div>
+                    <textarea id="studentRecordPreview" readonly rows="14" class="w-full p-3 bg-white text-slate-700 font-mono text-xs rounded-xl border border-sky-200"></textarea>
+                </div>
+
                 <div class="pt-4 flex justify-between items-center border-t border-slate-100">
                     <button onclick="goToStep(6)" class="px-4 py-2 text-slate-500 hover:text-slate-800 text-sm font-medium">
-                        <i class="fa-solid fa-arrow-left text-xs mr-1"></i> 上一步
+                        <i class="fa-solid fa-arrow-left text-xs mr-1"></i> 上一步 · Back
                     </button>
                 </div>
             </section>
@@ -622,28 +677,28 @@
         let currentStep = 1;
         const GAS_URL = 'https://script.google.com/macros/s/AKfycbzMCC6iJI_2Uc8nolNvM_fGncFKhS4TC1KLvkz-TYL02auA_gdwqC-i8wUB7kXi9nvS/exec';
 
-        // 20 Campus Observation Topics Data
+        // Social observation topics for senior high / vocational students
         const campusTopics = [
-            { id: 1, title: '🍱 桶餐剩食', desc: '午餐廚餘浪費與盛飯分量問題' },
-            { id: 2, title: '🌡️ 炎熱教室', desc: '教室西曬與冷氣耗能舒適度' },
-            { id: 3, title: '🌳 校園樹蔭', desc: '校園綠意遮陽與老樹維護' },
-            { id: 4, title: '💧 水資源', desc: '洗手台漏水與省水設施宣導' },
-            { id: 5, title: '💡 教室忘記關燈', desc: '放學後或分組教室隨手關燈' },
-            { id: 6, title: '♻️ 垃圾分類', desc: '回收桶分類不純與清理辛苦' },
-            { id: 7, title: '🔥 校園防火', desc: '逃生通道堆積雜物與演練' },
-            { id: 8, title: '🌏 地震避難', desc: '避難掩護動作與動線流暢度' },
-            { id: 9, title: '♿ 無障礙校園', desc: '輪椅斜坡、電梯與特殊生體驗' },
-            { id: 10, title: '❤️ 孤單的同學', desc: '下課下棋分組下獨自一人的陪伴' },
-            { id: 11, title: '🤝 友善校園', desc: '言語玩笑界線與同學互相包容' },
-            { id: 12, title: '📱 手機使用', desc: '下課滑手機與面對面互動溝通' },
-            { id: 13, title: '🤖 AI與學習', desc: '善用AI查資料而不是抄襲作弊' },
-            { id: 14, title: '🔊 噪音問題', desc: '自習課走廊吵鬧與專注環境' },
-            { id: 15, title: '🐦 校園生態', desc: '校園鳥類棲息與流浪動物相處' },
-            { id: 16, title: '🌧️ 豪雨積水', desc: '大雨走廊積水滑倒安全風險' },
-            { id: 17, title: '🏫 綠建築', desc: '雨水回收與校園太陽能發電' },
-            { id: 18, title: '🚰 飲水設備', desc: '飲水機排隊與濾心清潔維持' },
-            { id: 19, title: '🚻 廁所環境', desc: '廁所通風異味與清潔維護' },
-            { id: 20, title: '🚲 通學安全', desc: '校門口家長接送擁擠與騎車安全' }
+            { id: 1, title: '👵 高齡化與長照', desc: '獨居、失智、老老照顧與照服員權益 · Aging & long-term care｜SDG 3, 10' },
+            { id: 2, title: '🍲 近貧與社會救助', desc: '制度門檻、剩食分發與社區廚房 · Near-poverty & welfare｜SDG 1, 2, 10' },
+            { id: 3, title: '♿ 障礙權利與通用設計', desc: '就學、就業、交通與公共空間 · Disability rights & universal design｜SDG 10, 11' },
+            { id: 4, title: '📱 數位落差與資訊平權', desc: '高齡、偏鄉及弱勢者的數位包容 · Digital inclusion｜SDG 4, 10' },
+            { id: 5, title: '💻 弱勢學生數位學習', desc: '設備、網路與學習資源差距 · Equitable digital learning｜SDG 4, 10' },
+            { id: 6, title: '🧠 校園心理健康', desc: '心理健康假、諮商與去標籤化 · Mental health｜SDG 3' },
+            { id: 7, title: '🤝 同儕陪伴網絡', desc: '守門人、同儕支持與安全轉介 · Peer support｜SDG 3' },
+            { id: 8, title: '🌈 多元包容與反霸凌', desc: '文化、族群、性別與語言平等 · Inclusion & anti-bullying｜SDG 4, 5, 10' },
+            { id: 9, title: '🌏 新住民與外籍生', desc: '語言、文化適應與公共服務可近用 · Migrants & international students｜SDG 4, 10' },
+            { id: 10, title: '🪶 原住民族教育平權', desc: '文化保存、偏鄉資源與受教權 · Indigenous education｜SDG 4, 10' },
+            { id: 11, title: '⚧️ 性別平等與照顧勞動', desc: '歧視、暴力與無酬照顧價值 · Gender equality & care work｜SDG 5' },
+            { id: 12, title: '🏫 無障礙友善校園', desc: '坡道、電梯、導盲與友善廁所 · Accessible campus｜SDG 4, 10' },
+            { id: 13, title: '🏘️ 社區照顧支持網', desc: '社區據點、喘息服務與在地老化 · Community care｜SDG 3, 11' },
+            { id: 14, title: '👩‍⚕️ 醫療資源公平', desc: '城鄉差距、語言障礙與健康識能 · Health equity｜SDG 3, 10' },
+            { id: 15, title: '🥗 糧食與營養安全', desc: '營養不良、剩食與食物可近性 · Food security｜SDG 2' },
+            { id: 16, title: '💼 青年與障礙者就業', desc: '職場門檻、合理調整與同工同酬 · Inclusive employment｜SDG 8, 10' },
+            { id: 17, title: '🏠 居住正義', desc: '租屋負擔、無家者與社會住宅 · Housing justice｜SDG 1, 10, 11' },
+            { id: 18, title: '🧓 青銀共學', desc: '跨世代共讀、數位教學與經驗傳承 · Intergenerational learning｜SDG 4, 11' },
+            { id: 19, title: '🌾 在地小農與社區連結', desc: '服務學習、在地食材與公平消費 · Local community｜SDG 2, 11, 12' },
+            { id: 20, title: '🤖 AI 偏見與資訊倫理', desc: '演算法歧視、隱私、假訊息與查證 · AI ethics & media literacy｜SDG 4, 10, 16' }
         ];
 
         // -------------------------------------------------------------
@@ -667,7 +722,7 @@
                         <div class="text-[11px] text-slate-500 leading-snug">${t.desc}</div>
                     </div>
                     <div class="mt-2 flex items-center justify-between text-[10px] text-sky-600 opacity-0 group-hover:opacity-100 transition">
-                        <span>選擇主題</span>
+                        <span>選擇 · Select</span>
                         <i class="fa-solid fa-plus"></i>
                     </div>
                 </button>
@@ -677,7 +732,7 @@
         function selectTopic(topicTitle) {
             document.getElementById('inputTopic').value = topicTitle;
             document.getElementById('currentTopicText').innerText = topicTitle;
-            showToast(`已選擇主題：${topicTitle}`);
+            showToast(`已選擇 · Selected：${topicTitle}`);
             saveData();
         }
 
@@ -715,7 +770,7 @@
             // Update Progress Bar
             const percent = (currentStep / 7) * 100;
             document.getElementById('globalProgressBar').style.width = `${percent}%`;
-            document.getElementById('completedStepsCount').innerText = `${currentStep}/7 完成`;
+            document.getElementById('completedStepsCount').innerText = `${currentStep}/7`;
 
             // Auto-update topic text display in step 2
             const currentTopicVal = document.getElementById('inputTopic').value;
@@ -736,42 +791,43 @@
             
             if (isCorrect) {
                 feedback.classList.add('bg-emerald-50', 'text-emerald-800');
-                feedback.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i> <strong>太棒了！答對了！</strong> 選項 B 有明確的時間、地點、人物具體動作與真實感覺，這才是好故事的靈魂細節！`;
+                feedback.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i> <strong>答對了 · Correct!</strong> 選項 B 提供可查證的時間、人物、行動與數量，也沒有把少數觀察推論成所有人。`;
             } else {
                 feedback.classList.add('bg-red-50', 'text-red-800');
-                feedback.innerHTML = `<i class="fa-solid fa-circle-xmark text-red-600 mr-1"></i> <strong>再試一次！</strong> 選項 A 只是憑空想像的主觀印象，並沒有走到校園中真實看見細節喔。`;
+                feedback.innerHTML = `<i class="fa-solid fa-circle-xmark text-red-600 mr-1"></i> <strong>再想想 · Try again.</strong> 選項 A 把一個群體簡化成刻板印象，沒有提供可查證證據。`;
             }
         }
 
         function autoFillActsFromSteps() {
-            const topic = document.getElementById('inputTopic').value || '校園議題';
-            const observation = document.getElementById('inputObservation').value || '我在校園看到的現象';
+            const topic = document.getElementById('inputTopic').value || '社會議題';
+            const observation = document.getElementById('inputObservation').value || '我在生活中觀察到的現象';
             const problem = document.getElementById('inputProblem').value || '問題影響';
             const people = document.getElementById('inputPeople').value || '受影響的對象';
             const feeling = document.getElementById('inputFeeling').value || '他們的心情';
             const solution = document.getElementById('inputSolution').value || '改善方法';
             const message = document.getElementById('inputMessage').value || '傳達的理念';
+            const evidence = document.getElementById('inputEvidence').value || '訪談與可信資料';
 
             if (!document.getElementById('inputC1').value) {
-                document.getElementById('inputC1').value = `在一個平凡的校園早晨，主角正經歷著日常的校園生活，討論著有關【${topic}】的故事背景。`;
+                document.getElementById('inputC1').value = `在日常生活中，主角親身遇見與【${topic}】相關的情境。`;
             }
             if (!document.getElementById('inputC2').value) {
-                document.getElementById('inputC2').value = `有一天，主角停下腳步仔細觀察，赫然注意到：${observation}。`;
+                document.getElementById('inputC2').value = `主角仔細觀察並記錄：${observation}。`;
             }
             if (!document.getElementById('inputC3').value) {
-                document.getElementById('inputC3').value = `主角發現這樣的情況讓【${people}】深受影響，他們的感受是：${feeling}。因為${problem}。`;
+                document.getElementById('inputC3').value = `【${people}】受到不同影響；他們說出自己的感受與需要：${feeling}。問題背後可能是：${problem}。`;
             }
             if (!document.getElementById('inputC4').value) {
-                document.getElementById('inputC4').value = `主角決定不再忽視，開始調查、訪談與查找資料，和同學一起想到了解決點子。`;
+                document.getElementById('inputC4').value = `主角訪談、查證並比較不同觀點，找到的資料包括：${evidence}。新的證據也修正了原本的想法。`;
             }
             if (!document.getElementById('inputC5').value) {
-                document.getElementById('inputC5').value = `主角開始推動實踐方案：${solution}，邀請全校師生一起行動。`;
+                document.getElementById('inputC5').value = `主角與不同領域的夥伴先做小規模測試：${solution}，並依回饋調整。`;
             }
             if (!document.getElementById('inputC6').value) {
-                document.getElementById('inputC6').value = `校園產生了顯著改變！主角體會到：${message}。`;
+                document.getElementById('inputC6').value = `行動帶來改變，但仍有未完成的課題。主角體會到：${message}。`;
             }
 
-            showToast('已將步驟 3～5 的觀察自動轉換帶入 C1～C6！');
+            showToast('已建立六幕草稿 · Six-scene draft created!');
             saveData();
         }
 
@@ -779,74 +835,84 @@
         // Prompt Builder Function (Required by Specification)
         // -------------------------------------------------------------
         function buildGeminiPrompt(data) {
-            return `你是一位協助臺灣國中學生參加「AI繪本－校園觀察家」競賽的故事創作教練。請使用繁體中文，保留學生原本的觀察、語氣與主要想法，不要另寫一個不同的故事，也不要加入未提供的真實姓名或個人資料。故事要有具體人物、事件、衝突、感受與改變，解決方法必須有創意且能在校園實踐，避免只喊口號，總長適合製作成 3 分鐘內的繪本影片。
+            return `你是一位協助臺灣高中職外籍學生參加「AI 繪本－社會觀察家」競賽的雙語故事教練。競賽任務是探究生活及社會議題，運用 AI 工具提出具備批判思考與社會關懷的跨域創新提案，並製作三分鐘內的繪本影片。
 
-以下是我自己完成的校園觀察與故事紀錄：
+請遵守：
+1. 以繁體中文為主，每段附簡潔、自然、易懂的英文翻譯。
+2. 保留學生原本觀察與語氣，不捏造訪談、統計、來源或真實個資。
+3. 清楚區分已知事實、學生觀點與尚待查證內容；資料不足時標示「需要查證」，不可自行補造。
+4. 檢查刻板印象、權力關係、AI 偏見、隱私及受影響者的自主性。
+5. 提案須跨至少兩個領域，說明利害關係人、可行性、限制、風險與成效指標，避免只有口號或把科技當萬靈丹。
+6. 故事須有具體人物、衝突、情感、證據帶來的觀點轉變與行動，適合製作三分鐘內的六幕繪本影片。
+
+以下是學生自行完成的探究紀錄 / Student inquiry record：
 
 【我的基本資料】
 班級：${data.className || '未填寫'}
 座號：${data.number || '未填寫'}
 姓名：${data.name || '未填寫'}
 
-【我的故事主題】${data.topic || '未填寫'}
+【議題／故事名稱 Issue / Title】${data.topic || '未填寫 Not provided'}
 
-【我在校園真正觀察到的現象】${data.observation || '未填寫'}
+【核心探究問題 Inquiry Question】${data.question || '未填寫 Not provided'}
 
-【我覺得這是一個問題，因為】${data.problem || '未填寫'}
+【實際觀察 Facts Observed】${data.observation || '未填寫 Not provided'}
 
-【受到影響的人】${data.people || '未填寫'}
+【資料與來源 Evidence & Sources】${data.evidence || '未填寫 Not provided'}
 
-【他們可能有什麼感受】${data.feeling || '未填寫'}
+【成因與重要性 Causes & Significance】${data.problem || '未填寫 Not provided'}
 
-【我想到的改善方法】${data.solution || '未填寫'}
+【關係人與決策者 Stakeholders】${data.people || '未填寫 Not provided'}
 
-【我希望故事告訴大家】${data.message || '未填寫'}
+【需求、感受與權利 Needs, Feelings & Rights】${data.feeling || '未填寫 Not provided'}
+
+【不同／相反觀點 Alternative Views】${data.counterView || '未填寫 Not provided'}
+
+【SDGs 關聯 Related SDGs】${data.sdgs || '未填寫 Not provided'}
+
+【跨域創新提案 Interdisciplinary Proposal】${data.solution || '未填寫 Not provided'}
+
+【限制、風險與評估 Limits, Risks & Evaluation】${data.constraints || '未填寫 Not provided'}
+
+【AI 使用與查核 AI Use & Verification】${data.aiUse || '未填寫 Not provided'}
+
+【核心理念 Core Message】${data.message || '未填寫 Not provided'}
 
 以下是我自己設計的六幕故事：
 
-C1｜平常的校園
+C1｜生活現場 Everyday Context
 ${data.c1 || '未填寫'}
 
-C2｜發現問題
+C2｜看見不平等 Notice the Problem
 ${data.c2 || '未填寫'}
 
-C3｜看見影響
+C3｜不同人的聲音 Voices & Impact
 ${data.c3 || '未填寫'}
 
-C4｜尋找方法
+C4｜追問與查證 Investigate & Verify
 ${data.c4 || '未填寫'}
 
-C5｜行動與改變
+C5｜測試創新提案 Test the Proposal
 ${data.c5 || '未填寫'}
 
-C6｜故事結尾
+C6｜改變與未完課題 Change & Reflection
 ${data.c6 || '未填寫'}
 
-請協助：
-1. 修順故事
-2. 加強人物情感
-3. 加強故事轉折
-4. 檢查解決方案是否合理
-5. 整理成適合3分鐘AI繪本影片的六幕腳本
-6. 每幕產生 AI 生圖提示詞
-7. 最後提供一個有餘韻的結尾金句
+請先輸出「證據與倫理檢核」，列出：可確認的事實、需要查證的敘述、可能的偏見或刻板印象、未被聽見的關係人、提案的限制與風險。不要修改或補造學生資料。
+
+接著整理為適合三分鐘 AI 繪本影片的六幕雙語腳本。每幕約 20–25 秒，中文在前、英文在後；加強人物情感與轉折，但不得杜撰證據。
 
 每一幕請依序輸出：
-【幕次】
-【旁白】
-【角色對話】
-【畫面描述】
-【AI 生圖提示詞】
+【幕次 Scene】
+【旁白 Narration｜中／EN】
+【角色對話 Dialogue｜中／EN】
+【畫面描述 Visual Description｜中／EN】
+【AI 生圖提示詞 Image Prompt｜EN】
+【本幕依據 Evidence Used】
 
 AI 生圖提示詞要描述人物、場景、動作、表情、構圖、光線與氣氛，並保持主要角色外觀一致。
 
-最後再輸出：
-【故事名稱】
-【故事核心議題】
-【想傳達的理念】
-【創意解決方案】
-【SDGs 關聯】
-【3 分鐘影片結尾金句】`;
+最後輸出：故事名稱（中／EN）、核心議題、跨域提案、SDGs 關聯、成效指標、限制與下一步，以及中英雙語結尾金句。`;
         }
 
         function getFormData() {
@@ -855,11 +921,17 @@ AI 生圖提示詞要描述人物、場景、動作、表情、構圖、光線�
                 number: document.getElementById('studentNumber').value,
                 name: document.getElementById('studentName').value,
                 topic: document.getElementById('inputTopic').value,
+                question: document.getElementById('inputQuestion').value,
                 observation: document.getElementById('inputObservation').value,
+                evidence: document.getElementById('inputEvidence').value,
                 problem: document.getElementById('inputProblem').value,
                 people: document.getElementById('inputPeople').value,
                 feeling: document.getElementById('inputFeeling').value,
+                counterView: document.getElementById('inputCounterView').value,
+                sdgs: document.getElementById('inputSDGs').value,
                 solution: document.getElementById('inputSolution').value,
+                constraints: document.getElementById('inputConstraints').value,
+                aiUse: document.getElementById('inputAIUse').value,
                 message: document.getElementById('inputMessage').value,
                 c1: document.getElementById('inputC1').value,
                 c2: document.getElementById('inputC2').value,
@@ -875,6 +947,8 @@ AI 生圖提示詞要描述人物、場景、動作、表情、構圖、光線�
             const fullPrompt = buildGeminiPrompt(data);
             const previewEl = document.getElementById('promptPreviewText');
             if (previewEl) previewEl.value = fullPrompt;
+            const recordEl = document.getElementById('studentRecordPreview');
+            if (recordEl) recordEl.value = buildStudentRecord(data);
         }
 
         function togglePromptPreview() {
@@ -892,7 +966,7 @@ AI 生圖提示詞要描述人物、場景、動作、表情、構圖、光線�
         async function copyFullPrompt() {
             const data = getFormData();
             if (!data.observation.trim()) {
-                showToast('請先完成 Step 3 的校園觀察紀錄', true);
+                showToast('請先完成觀察紀錄 · Please complete Step 3', true);
                 goToStep(3);
                 return;
             }
@@ -902,17 +976,72 @@ AI 生圖提示詞要描述人物、場景、動作、表情、構圖、光線�
         }
 
         function buildStudentRecord(data) {
-            return `故事主題：${data.topic}\n\n校園觀察：${data.observation}\n\n問題原因：${data.problem}\n\n影響對象：${data.people}\n\n感受：${data.feeling}\n\n改善方法：${data.solution}\n\n核心理念：${data.message}\n\nC1 平常的校園：${data.c1}\n\nC2 發現問題：${data.c2}\n\nC3 看見影響：${data.c3}\n\nC4 尋找方法：${data.c4}\n\nC5 行動與改變：${data.c5}\n\nC6 故事結尾：${data.c6}`;
+            return `AI 社會觀察家｜高中職外籍生雙語版
+班級 Class：${data.className || '未填寫'}
+座號 No.：${data.number || '未填寫'}
+姓名 Name：${data.name || '未填寫'}
+
+議題／故事 Issue / Title：${data.topic || '未填寫'}
+核心探究問題 Inquiry Question：${data.question || '未填寫'}
+
+實際觀察 Facts Observed：${data.observation || '未填寫'}
+
+資料與來源 Evidence & Sources：${data.evidence || '未填寫'}
+
+成因與重要性 Causes & Significance：${data.problem || '未填寫'}
+
+關係人 Stakeholders：${data.people || '未填寫'}
+
+需求、感受與權利 Needs, Feelings & Rights：${data.feeling || '未填寫'}
+
+不同觀點 Alternative Views：${data.counterView || '未填寫'}
+
+SDGs：${data.sdgs || '未填寫'}
+
+跨域創新提案 Proposal：${data.solution || '未填寫'}
+
+限制、風險與評估 Limits, Risks & Evaluation：${data.constraints || '未填寫'}
+
+AI 使用與查核 AI Use & Verification：${data.aiUse || '未填寫'}
+
+核心理念 Core Message：${data.message || '未填寫'}
+
+C1 生活現場：${data.c1 || '未填寫'}
+
+C2 看見問題：${data.c2 || '未填寫'}
+
+C3 不同聲音：${data.c3 || '未填寫'}
+
+C4 追問查證：${data.c4 || '未填寫'}
+
+C5 測試提案：${data.c5 || '未填寫'}
+
+C6 改變與反思：${data.c6 || '未填寫'}`;
+        }
+
+        function downloadStudentRecord() {
+            const data = getFormData();
+            const blob = new Blob([buildStudentRecord(data)], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            const safeName = (data.name || 'student').replace(/[\\/:*?"<>|]/g, '_');
+            link.href = url;
+            link.download = `社會觀察家_${safeName}.txt`;
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            URL.revokeObjectURL(url);
+            showToast('已下載備份 · Backup downloaded');
         }
 
         async function submitToGoogleSheet() {
             const data = getFormData();
             const requiredFields = [
-                ['className', '請先填寫班級', 7],
-                ['number', '請先填寫座號', 7],
-                ['name', '請先填寫姓名', 7],
-                ['topic', '請先填寫故事主題', 2],
-                ['observation', '請先完成校園觀察紀錄', 3]
+                ['className', '請填寫班級 · Enter class', 7],
+                ['number', '請填寫座號 · Enter number', 7],
+                ['name', '請填寫姓名 · Enter name', 7],
+                ['topic', '請填寫議題 · Enter issue', 2],
+                ['observation', '請完成觀察 · Complete observation', 3]
             ];
 
             for (const [field, message, step] of requiredFields) {
@@ -928,7 +1057,7 @@ AI 生圖提示詞要描述人物、場景、動作、表情、構圖、光線�
             const payload = {
                 ...data,
                 action: 'save',
-                category: data.topic || '校園觀察故事',
+                category: data.topic || '高中職社會觀察家',
                 detail: buildStudentRecord(data),
                 content: buildStudentRecord(data),
                 prompt: buildGeminiPrompt(data)
@@ -936,27 +1065,23 @@ AI 生圖提示詞要描述人物、場景、動作、表情、構圖、光線�
 
             try {
                 btn.disabled = true;
-                btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i><span>儲存中...</span>';
+                btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i><span>傳送中 · Sending...</span>';
 
-                const response = await fetch(GAS_URL, {
+                await fetch(GAS_URL, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
                     body: JSON.stringify(payload),
-                    redirect: 'follow'
+                    keepalive: true
                 });
 
-                if (!response.ok) throw new Error(`伺服器回應錯誤：${response.status}`);
-
-                const result = JSON.parse(await response.text());
-                if (result.status !== 'success' && result.success !== true) {
-                    throw new Error(result.message || 'Google 試算表寫入失敗');
-                }
-
                 saveData();
-                showToast('🎉 作品已成功儲存到老師的 Google 試算表！');
+                localStorage.setItem('social_observer_last_submitted', new Date().toISOString());
+                showToast('✅ 已送出！請到「我的紀錄」確認 · Sent; check My Records');
             } catch (error) {
-                console.error('Google Sheet 儲存錯誤：', error);
-                showToast(`❌ 儲存失敗：${error.message || '請稍後再試'}`, true);
+                console.error('送出要求遭網路阻擋：', error);
+                saveData();
+                showToast('⚠️ 網路阻擋送出；完整內容仍已保存在本頁，請下載備份後再試 · Saved locally', true);
             } finally {
                 btn.disabled = false;
                 btn.innerHTML = originalHtml;
@@ -968,15 +1093,15 @@ AI 生圖提示詞要描述人物、場景、動作、表情、構圖、光線�
         // -------------------------------------------------------------
         function saveData() {
             const data = getFormData();
-            localStorage.setItem('campus_observer_draft', JSON.stringify(data));
+            localStorage.setItem('social_observer_bilingual_draft', JSON.stringify(data));
             const status = document.getElementById('saveStatusText');
             if (status) {
-                status.innerText = `已於 ${new Date().toLocaleTimeString()} 儲存`;
+                status.innerText = `已儲存 Saved ${new Date().toLocaleTimeString()}`;
             }
         }
 
         function loadSavedData() {
-            const saved = localStorage.getItem('campus_observer_draft');
+            const saved = localStorage.getItem('social_observer_bilingual_draft');
             if (!saved) return;
 
             try {
@@ -985,11 +1110,17 @@ AI 生圖提示詞要描述人物、場景、動作、表情、構圖、光線�
                 document.getElementById('studentNumber').value = data.number || '';
                 document.getElementById('studentName').value = data.name || '';
                 document.getElementById('inputTopic').value = data.topic || '';
+                document.getElementById('inputQuestion').value = data.question || '';
                 document.getElementById('inputObservation').value = data.observation || '';
+                document.getElementById('inputEvidence').value = data.evidence || '';
                 document.getElementById('inputProblem').value = data.problem || '';
                 document.getElementById('inputPeople').value = data.people || '';
                 document.getElementById('inputFeeling').value = data.feeling || '';
+                document.getElementById('inputCounterView').value = data.counterView || '';
+                document.getElementById('inputSDGs').value = data.sdgs || '';
                 document.getElementById('inputSolution').value = data.solution || '';
+                document.getElementById('inputConstraints').value = data.constraints || '';
+                document.getElementById('inputAIUse').value = data.aiUse || '';
                 document.getElementById('inputMessage').value = data.message || '';
                 document.getElementById('inputC1').value = data.c1 || '';
                 document.getElementById('inputC2').value = data.c2 || '';
@@ -997,6 +1128,7 @@ AI 生圖提示詞要描述人物、場景、動作、表情、構圖、光線�
                 document.getElementById('inputC4').value = data.c4 || '';
                 document.getElementById('inputC5').value = data.c5 || '';
                 document.getElementById('inputC6').value = data.c6 || '';
+                updatePromptPreviewText();
             } catch (e) {
                 console.error(e);
             }
@@ -1014,7 +1146,7 @@ AI 生圖提示詞要描述人物、場景、動作、表情、構圖、光線�
 
         function resetData() {
             if (window.confirm ? true : true) { // Avoid native confirm popup UI mismatch
-                localStorage.removeItem('campus_observer_draft');
+                localStorage.removeItem('social_observer_bilingual_draft');
                 location.reload();
             }
         }
